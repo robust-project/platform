@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+
+
+    <bean id="boardsieDbProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:boardsie-db.properties"/>
+    </bean>
+
+    <!-- Spring manage ServiceBean -->
+    <bean id="robustBehaviourAnalysisServiceImpl" class="pl.swmind.robust.ws.behaviouranalysis.BehaviourAnalysisServiceImpl" >
+        <property name="boardsieMicroCommunityRuleRunner" ref="boardsieMicroCommunityRuleRunner" />
+        <property name="boardsieMacroCommunityRuleRunner" ref="boardsieMacroCommunityRuleRunner" />
+    </bean>
+
+
+
+    <bean id="boardsieMicroCommunityRuleRunner" class="eu.project.robust.behaviour.corpora.Boardsie.analysis.BoardsieMicroCommunityRuleRunner">
+        <!--<property name="dataSource" ref="ibmDataSource" />-->
+    </bean>
+
+    <bean id="boardsieMacroCommunityRuleRunner" class="eu.project.robust.behaviour.corpora.Boardsie.analysis.BoardsieMacroCommunityRuleRunner">
+        <!--<property name="dataSource" ref="ibmDataSource" />-->
+    </bean>
+
+
+    <bean id="boardsieConnection" class="eu.project.robust.behaviour.corpora.Boardsie.BoardsieDBConnection" destroy-method="close">
+    </bean>
+
+
+    <!-- JAX-WS Service Endpoint -->
+    <jaxws:endpoint id="robustBehaviourAnalysisService" implementor="#robustBehaviourAnalysisServiceImpl" address="/robustBehaviourAnalysisService" />
+
+</beans>

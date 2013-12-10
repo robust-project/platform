@@ -1,0 +1,31 @@
+
+= Java Configuration = 
+* min. Java 1.6
+
+== JAVA_HOME need to be set ==
+* check 'echo JAVA_HOME', if empty:
+** 'export JAVA_HOME=###PATH###'
+** ###PATH### = the path to your java environment, common: /usr/lib/jvm/default-java
+
+
+= Pig =
+* Get latest Pig version from http://www.apache.org/dyn/closer.cgi/pig
+* Example:
+** http://apache.lauf-forum.at/pig/pig-0.9.2/pig-0.9.2.tar.gz
+** extract: tar -xzf pig-0.9.2.tar.gz
+** go into pig directory: 'cd pig-0.9.2'
+** rename jar 'mv pig-0.9.2.jar pig.jar'
+
+== Configuration ==
+* set PIGDIR: 'export PIGDIR=###PATH###'
+* ###PATH### = the path of the extracted pig package
+* check by 'echo $PIGDIR'
+
+
+= Queries =
+
+== sap_degree_distribution.sh ==
+* Computes the degree distribution of the SAP reply graph
+* output path is sap_degree_distribution
+* results are in sap_degree_distribution/part-r-00000
+* format: <degree>	<number of vertices>

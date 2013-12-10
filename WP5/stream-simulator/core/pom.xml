@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>deri.uimr.streamsim</groupId>
+    <artifactId>stream-simulator-parent</artifactId>
+    <version>5.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>stream-simulator-core</artifactId>
+  <packaging>jar</packaging>
+
+  <name>UIMR Stream Simulator Core</name>
+  <description>The UIMR Stream Simulator simulates the behaviour of event streams read from source plugins and deliver the results using delivery plugins. This artifact is the core simulation engine and implementation.</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <links>
+            <link>http://uimr.deri.ie/~hughro/docs/stream-simulator-core/</link>
+          </links>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>deri.uimr.streamsim</groupId>
+      <artifactId>stream-simulator-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>${version.jetty}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${version.slf4j}</version>
+    </dependency>
+  </dependencies>
+</project>

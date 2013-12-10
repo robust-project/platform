@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+  xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:activiti="http://activiti.org/bpmn"
+  targetNamespace="http://activiti.org/bpmn20">
+	
+  <!--
+  Process ID and NAME conventions are very important:
+    (1) NO spaces are allowed in either then ID or NAME attributes
+    (2) The ID MUST start with 'Treatment_' and follow with a unique UUID value
+    (3) Don't forget to refer to the same ID value in the bpmndi:BPMNDiagram top-level
+  
+  -->
+	<process id="Treatment_96c83bf0-773d-4553-b891-84deefe2e779" name="IBMDemonstrator2012">
+	
+	<!-- Top level listener____________________________________________________________ -->
+  <extensionElements>
+    <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="start" />
+    <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="end" />
+	</extensionElements>
+	
+	<startEvent id="E1" />
+	<endEvent id="E2" />
+	
+    <!-- Activities____________________________________________________________________ -->
+    <userTask id="T1" name="Observe Activity in community">
+      <documentation>Determine the level of activity (drop) in the community - check for off-topic discussions; unanswered threads.</documentation>
+      
+      <extensionElements>
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+      </extensionElements>
+    </userTask>
+    
+    <userTask id="T2" name="Simulate thread ordering policy change">
+      <documentation>Use the Simulation Centre to model a change in the ordering of threads for the community.</documentation>
+      
+      <extensionElements>
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+      </extensionElements>
+    </userTask>
+    
+    <userTask id="T3" name="Evaluate simulation result">
+      <documentation>Compare the outcome of the simulation with existing community data</documentation>
+      
+      <extensionElements>
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+      </extensionElements>
+    </userTask>
+    
+    <userTask id="T4" name="Apply policy changes">
+      <documentation>Apply changes to community if applicable</documentation>
+      
+      <extensionElements>
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+      </extensionElements>
+    </userTask>
+    
+    <!-- Flows_________________________________________________________________________ -->
+    <sequenceFlow id="F1" sourceRef="E1" targetRef="T1">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F2" sourceRef="T1" targetRef="T2">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F3" sourceRef="T2" targetRef="T3">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F4" sourceRef="T3" targetRef="T4">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F5" sourceRef="T4" targetRef="E2">
+    </sequenceFlow>
+    
+	</process>
+	
+	<!-- Layout____________________________________________________________________ -->
+	<bpmndi:BPMNDiagram id="diagram">
+    <bpmndi:BPMNPlane bpmnElement="Treatment_96c83bf0-773d-4553-b891-84deefe2e779" id="RTEMainPlane">
+    
+    <!-- Nodes______________________________________________________________ -->
+    <bpmndi:BPMNShape bpmnElement="E1" id="S1">
+			<omgdc:Bounds width="40.0" height="40.0" x="10.0" y="10.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T1" id="S2">
+			<omgdc:Bounds width="160.0" height="60.0" x="100.0" y="10.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T2" id="S3">
+			<omgdc:Bounds width="160.0" height="60.0" x="100.0" y="100.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T3" id="S4">
+			<omgdc:Bounds width="160.0" height="60.0" x="100.0" y="190.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T4" id="S5">
+			<omgdc:Bounds width="160.0" height="60.0" x="100.0" y="280.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="E2" id="S6">
+			<omgdc:Bounds width="40.0" height="40.0" x="320.0" y="280.0" />
+    </bpmndi:BPMNShape>
+ 
+    <!-- Edges__________________________________________________ -->
+    <bpmndi:BPMNEdge bpmnElement="F1" id="ED1">
+      <omgdi:waypoint x="50.0"   y="30.0" />
+			<omgdi:waypoint x="100.0"  y="30.0" />
+		</bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F2" id="ED2">
+      <omgdi:waypoint x="180.0" y="70.0" />
+      <omgdi:waypoint x="180.0" y="100.0" />
+		</bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F3" id="ED3">
+      <omgdi:waypoint x="180.0" y="160.0" />
+      <omgdi:waypoint x="180.0" y="190.0" />
+		</bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F4" id="ED4">
+      <omgdi:waypoint x="180.0" y="250.0" />
+      <omgdi:waypoint x="180.0" y="280.0" />
+		</bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F5" id="ED5">
+      <omgdi:waypoint x="260.0" y="300.0" />
+      <omgdi:waypoint x="320.0" y="300.0" />
+		</bpmndi:BPMNEdge>
+	
+    </bpmndi:BPMNPlane>
+	</bpmndi:BPMNDiagram>
+	
+</definitions>

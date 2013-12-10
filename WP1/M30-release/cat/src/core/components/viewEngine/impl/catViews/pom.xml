@@ -1,0 +1,146 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <!--
+  /////////////////////////////////////////////////////////////////////////
+  //
+  // © University of Southampton IT Innovation Centre, 2011
+  //
+  // Copyright in this software belongs to University of Southampton
+  // IT Innovation Centre of Gamma House, Enterprise Road, 
+  // Chilworth Science Park, Southampton, SO16 7NS, UK.
+  //
+  // This software may not be used, sold, licensed, transferred, copied
+  // or reproduced in whole or in part in any manner or form or in or
+  // on any media by any person other than in accordance with the terms
+  // of the Licence Agreement supplied with the software, or otherwise
+  // without the prior written consent of the copyright owners.
+  //
+  // This software is distributed WITHOUT ANY WARRANTY, without even the
+  // implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+  // PURPOSE, except where stated in the Licence Agreement supplied with
+  // the software.
+  //
+  //      Created By :            sgc
+  //      Created Date :          2011-09-15
+  //      Created for Project :   ROBUST
+  //
+  /////////////////////////////////////////////////////////////////////////
+  -->
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+  <artifactId>robust-cat-core-components-viewEngine-impl-catViews</artifactId>
+  <version>${cat.version}</version>
+  <packaging>jar</packaging>
+  
+  <parent>
+    <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+    <artifactId>robust-cat-core-components-viewEngine-impl</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <build>
+    <plugins>
+      
+      <!-- Maven compiler -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    
+    </plugins>
+  
+    <directory>lib</directory>
+    <sourceDirectory>src</sourceDirectory>
+  </build>
+  
+  <dependencies>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-components-viewEngine-spec-uif</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-components-viewEngine-spec-catViews</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-components-treatmentEngine-spec</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-components-simulationIntegrationEngine-spec</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-components-simulationIntegrationEngine-engine</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-components-viewEngine-impl-catUIComponents</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-common</artifactId>
+      <version>${cat.version}</version>
+      <type>jar</type>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-models-riskModel</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-models-treatmentModel</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-components-visualizationEngine-engine</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-components-visualizationEngine-spec-vizLibrary-roMatrix</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    
+    <!-- 3rd party dependencies _____+______________________________________ -->
+    <dependency>
+      <groupId>pl.swmind.robust</groupId>
+      <artifactId>role-composition-visualization</artifactId>
+      <version>${role.comp.vis.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-dataProviders-riskrepo-dataLayer</artifactId>
+      <version>${cat.version}</version>
+      <type>jar</type>
+    </dependency>
+  </dependencies>
+  
+</project>

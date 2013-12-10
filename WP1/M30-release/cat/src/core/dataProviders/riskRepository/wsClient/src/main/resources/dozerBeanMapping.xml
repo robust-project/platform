@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+  <configuration>
+    <stop-on-errors>true</stop-on-errors>
+    <date-format>MM/dd/yyyy HH:mm</date-format>
+    <wildcard>true</wildcard>
+	
+	  <custom-converters> <!-- these are always bi-directional -->
+      <converter type="client.EnumConverter" >
+        <class-a>uk.ac.soton.itinnovation.robust.riskmodel.ImpactLevel</class-a>
+        <class-b>uk.ac.soton.itinnovation.robust.cat.datalayer.wsclient.gen.ImpactLevel</class-b>
+      </converter>
+
+      <!-- You are responsible for mapping everything between ClassA and ClassB 
+      <converter type="org.dozer.converters.TestCustomHashMapConverter" >
+        <class-a>org.dozer.vo.TestCustomConverterHashMapObject</class-a>
+        <class-b>org.dozer.vo.TestCustomConverterHashMapPrimeObject</class-b>
+      </converter>-->
+     
+    </custom-converters>   
+  </configuration>
+
+  <mapping>
+    <class-a>uk.ac.soton.itinnovation.robust.riskmodel.Community</class-a>
+    <class-b>uk.ac.soton.itinnovation.robust.cat.datalayer.wsclient.gen.Community</class-b>
+      <field>
+        <a set-method="setUuid(java.lang.String)">uuid</a>
+        <b>uuid</b>
+      </field>
+	  <field>
+        <a>isStream</a>
+        <b get-method="isIsStream">isStream</b>
+      </field>
+  </mapping> 
+            
+  <mapping>
+    <class-a>uk.ac.soton.itinnovation.robust.riskmodel.Objective</class-a>
+    <class-b>uk.ac.soton.itinnovation.robust.cat.datalayer.wsclient.gen.Objective</class-b>
+      <field>
+        <a set-method="setId(java.lang.String)">id</a>
+        <b>id</b>
+      </field>
+  </mapping> 
+  
+  
+    <mapping>
+    <class-a>uk.ac.soton.itinnovation.robust.riskmodel.Risk</class-a>
+    <class-b>uk.ac.soton.itinnovation.robust.cat.datalayer.wsclient.gen.Risk</class-b>
+      <field>
+        <a set-method="setId(java.lang.String)">id</a>
+        <b>id</b>
+      </field>
+  </mapping> 
+  
+  <mapping><!--possibly connect to VE converter-->
+    <class-a>uk.ac.soton.itinnovation.robust.cat.common.datastructures.Event</class-a>
+    <class-b>uk.ac.soton.itinnovation.robust.cat.datalayer.wsclient.gen.Event</class-b>
+      <field>
+        <a set-method="setUuid(java.lang.String)">uuid</a>
+        <b>uuid</b>
+      </field>
+  </mapping> 
+  
+    <mapping><!--possibly connect to VE converter-->
+    <class-a>uk.ac.soton.itinnovation.robust.cat.common.datastructures.EventCondition</class-a>
+    <class-b>uk.ac.soton.itinnovation.robust.cat.datalayer.wsclient.gen.EventCondition</class-b>
+      <field>
+        <a set-method="setUuid(java.lang.String)">uuid</a>
+        <b>uuid</b>
+      </field>
+  </mapping> 
+  
+  
+                   
+</mappings>
+          

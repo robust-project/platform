@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="PredictorServiceImplService" targetNamespace="http://catsim.predictorservice.robust.itinnovation.soton.ac.uk/" xmlns:ns1="http://ws.common.cat.robust.itinnovation.soton.ac.uk/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://catsim.predictorservice.robust.itinnovation.soton.ac.uk/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import location="http://robust-www.softwaremind.pl/PredictorService/?wsdl=predictorCatSimService.wsdl" namespace="http://ws.common.cat.robust.itinnovation.soton.ac.uk/">
+    </wsdl:import>
+  <wsdl:binding name="PredictorServiceImplServiceSoapBinding" type="ns1:IPredictorService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="evaluate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="evaluate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="evaluateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelJob">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cancelJob">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelJobResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createEvaluationJob">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createEvaluationJob">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createEvaluationJobResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getJobStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getJobStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getJobStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEvaluationResult">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEvaluationResult">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEvaluationResultResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getJobs">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getJobs">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getJobsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getJobDetails">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getJobDetails">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getJobDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPredictorServiceDescription">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPredictorServiceDescription">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPredictorServiceDescriptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PredictorServiceImplService">
+    <wsdl:port binding="tns:PredictorServiceImplServiceSoapBinding" name="PredictorServiceImplPort">
+      <soap:address location="http://robust-www.softwaremind.pl/PredictorService/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

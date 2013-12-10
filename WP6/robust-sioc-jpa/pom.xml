@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.swmind.robust</groupId>
+    <artifactId>robust-sioc-jpa</artifactId>
+    <name>Robust SIOC JPA Common Model</name>
+    <version>1.1-SNAPSHOT</version>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1</version>
+    </parent>
+
+    <properties>
+        <hibernate.ver>3.6.10.Final</hibernate.ver>
+        <h2.db.ver>1.2.145</h2.db.ver>
+        <springframework.ver>3.0.5.RELEASE</springframework.ver>
+        <junit.ver>4.10</junit.ver>
+        <commons.dbcp.ver>1.4</commons.dbcp.ver>
+        <javassist.ver>3.12.1.GA</javassist.ver>
+        <slf4j.ver>1.6.1</slf4j.ver>
+        <postgresql.ver>9.1-901.jdbc4</postgresql.ver>
+        <log4j.ver>1.2.12</log4j.ver>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.21</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>commons-io</groupId>
+        	<artifactId>commons-io</artifactId>
+        	<version>2.4</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.db.ver}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <scope>compile</scope>
+            <version>${log4j.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javassist.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons.dbcp.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${springframework.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springframework.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springframework.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.ver}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${springframework.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springframework.ver}</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>org.springframework.data</groupId>
+        	<artifactId>spring-data-jpa</artifactId>
+        	<version>1.0.3.RELEASE</version>
+        </dependency>
+    </dependencies>
+
+  <scm>
+    <connection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-sioc-jpa/trunk</connection>
+    <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-sioc-jpa/trunk</developerConnection>
+    <url>https://robust.softwaremind.pl/svn/WP6/robust-sioc-jpa/trunk</url>
+  </scm>
+</project>

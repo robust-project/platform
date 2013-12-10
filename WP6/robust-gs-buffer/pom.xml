@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>pl.swmind.robust.gibbs.buffer</groupId>
+  <artifactId>robust-gs-buffer</artifactId>
+  <version>1.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <parent>
+      <artifactId>robust-parent-pom</artifactId>
+      <groupId>pl.swmind.robust</groupId>
+      <version>1.1</version>
+  </parent>
+
+    <scm>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-gs-buffer/trunk</developerConnection>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-gs-buffer/trunk</connection>
+        <url>https://robust.softwaremind.pl/svn/WP6/robust-gs-buffer/trunk</url>
+    </scm>
+
+
+  <name>robust-gs-buffer</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+
+
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>1.6.1</version>
+      </dependency>
+
+      <dependency>
+          <groupId>co.polecat.robust</groupId>
+          <artifactId>robust-gibbs-sampler</artifactId>
+          <version>1.1</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.testng</groupId>
+          <artifactId>testng</artifactId>
+          <version>6.7</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+          <version>${spring.ver}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+      </dependency>
+
+
+      <dependency>
+          <groupId>pl.swmind.robust.streaming</groupId>
+          <artifactId>robust-activemq-connector</artifactId>
+          <version>1.1</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.mockito</groupId>
+          <artifactId>mockito-all</artifactId>
+          <version>1.9.0</version>
+          <scope>test</scope>
+      </dependency>
+  </dependencies>
+</project>

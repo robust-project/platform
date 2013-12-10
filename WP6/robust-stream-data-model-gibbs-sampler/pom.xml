@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.swmind.robust.stream</groupId>
+    <artifactId>robust-stream-data-model-gibbs-sampler</artifactId>
+    <version>1.1-SNAPSHOT</version>
+    <name>Robust Streaming Gibbs Sampler Data Model</name>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1</version>
+    </parent>
+
+    <scm>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-stream-data-model-gibbs-sampler/trunk</developerConnection>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-stream-data-model-gibbs-sampler/trunk</connection>
+        <url>https://robust.softwaremind.pl/svn/WP6/robust-stream-data-model-gibbs-sampler/trunk</url>
+    </scm>
+
+    <properties>
+        <hibernate.ver>3.6.10.Final</hibernate.ver>
+        <h2.db.ver>1.2.145</h2.db.ver>
+        <springframework.ver>3.0.2.RELEASE</springframework.ver>
+        <junit.ver>4.10</junit.ver>
+        <commons.dbcp.ver>1.4</commons.dbcp.ver>
+        <javassist.ver>3.12.1.GA</javassist.ver>
+        <slf4j.ver>1.6.1</slf4j.ver>
+        <postgresql.ver>9.1-901.jdbc4</postgresql.ver>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>pl.swmind.robust</groupId>
+            <artifactId>robust-commons</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.ver}</version>
+        </dependency>
+
+        <!--hibernate logging-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javassist.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons.dbcp.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.db.ver}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${springframework.ver}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springframework.ver}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springframework.ver}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.ver}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.ver}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>3.0.2.RELEASE</version>
+        </dependency>
+    </dependencies>
+</project>

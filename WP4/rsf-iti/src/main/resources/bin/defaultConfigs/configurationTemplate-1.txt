@@ -1,0 +1,14 @@
+{
+  "templateName": "Default Model Configuration Template",
+  "useCurrentTimeAsStartDate": false,
+  "startYear": 2011,
+  "startMonth": 7,
+  "startDay": 1,
+  "startHour": 8,
+  "endYear": 2011,
+  "endMonth": 9,
+  "endDay": 1,
+  "endHour": 8,
+  "numberOfAgents": 200,
+  "numberOfForums": 300
+}

@@ -1,0 +1,22 @@
+% Title: ThreadRecon ARFF Template
+% By: erik, erik.aumayr@deri.org
+% Date: 2012-09-19
+@RELATION Replies
+@ATTRIBUTE timeDiffH NUMERIC
+@ATTRIBUTE cosim NUMERIC
+@ATTRIBUTE quoted NUMERIC
+@ATTRIBUTE newestparent NUMERIC
+@ATTRIBUTE distance NUMERIC
+@ATTRIBUTE position NUMERIC
+@ATTRIBUTE lastown {fs, fp, is, ib, ip, nl}
+@ATTRIBUTE dialen NUMERIC
+@ATTRIBUTE diadist NUMERIC
+@ATTRIBUTE prevsparent NUMERIC
+@ATTRIBUTE firstpost NUMERIC
+@ATTRIBUTE isDirectReply {0.0, 1.0}
+
+% The following lines contain examples for positive and negative instances.
+% The last element in each line is the class label. {1.0} describes a reply
+% relation, {0.0} a non-reply relation.
+4101.93944444, 0.108726420374, 0, 0, 2, 2, is, 0, 99, 1, 1, 1.0
+19.3361111111, 0.0408684413578, 0, 2, 1, 2, ip, 1, 1, 0, 0, 0.0

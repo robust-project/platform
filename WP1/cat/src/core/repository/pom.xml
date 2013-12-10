@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <!--
+  /////////////////////////////////////////////////////////////////////////
+  //
+  // © University of Southampton IT Innovation Centre, 2011
+  //
+  // Copyright in this software belongs to University of Southampton
+  // IT Innovation Centre of Gamma House, Enterprise Road, 
+  // Chilworth Science Park, Southampton, SO16 7NS, UK.
+  //
+  // This software may not be used, sold, licensed, transferred, copied
+  // or reproduced in whole or in part in any manner or form or in or
+  // on any media by any person other than in accordance with the terms
+  // of the Licence Agreement supplied with the software, or otherwise
+  // without the prior written consent of the copyright owners.
+  //
+  // This software is distributed WITHOUT ANY WARRANTY, without even the
+  // implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+  // PURPOSE, except where stated in the Licence Agreement supplied with
+  // the software.
+  //
+  //      Created By :            bmn
+  //      Created Date :          03-11-2011
+  //      Created for Project :   ROBUST
+  //
+  /////////////////////////////////////////////////////////////////////////
+  -->
+    
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+  <artifactId>robust-cat-core-repository</artifactId>
+  <packaging>jar</packaging>
+  
+  <description>Risk repository</description>
+  <url>http://www.robust-project.eu</url>
+  
+  <parent>
+    <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+    <artifactId>robust-cat-core</artifactId>
+    <version>1.6</version>
+  </parent>
+  
+  <licenses>
+    <license>
+      <name>LGPL</name>
+      <url>http://www.gnu.org/licenses/lgpl.html</url>
+    </license>
+  </licenses>
+ 
+ 
+  <build>
+    <plugins>
+	
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-dependency-plugin</artifactId>
+		<configuration>
+			<outputDirectory>
+				${project.build.directory}
+			</outputDirectory>
+		</configuration>
+	</plugin>
+     
+	    <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <executions>
+                    <execution>
+                        <id>process-sources</id>
+						<phase>process-sources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			
+    </plugins>
+	
+	<directory>lib</directory>
+	  
+  </build>
+  
+  <dependencies>
+  
+	<dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-io</artifactId>
+	  <version>1.3.2</version>
+	</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${cat.junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>${cat.log4j.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.16</version>
+    </dependency>
+	<dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-common</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+	<dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-models-riskModel</artifactId>
+      <version>${cat.version}</version>
+    </dependency> 
+  <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-models-treatmentModel</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-dataProviders-riskrepo-wsclient</artifactId>
+      <version>${cat.version}</version>
+      <type>jar</type>
+    </dependency>
+	<dependency>
+      <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+      <artifactId>robust-cat-core-dataProviders-riskrepo-dataLayer</artifactId>
+      <version>${cat.version}</version>
+    </dependency>
+  </dependencies>
+  
+</project>

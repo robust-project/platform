@@ -1,0 +1,61 @@
+#this indicated whether you are using the mysql database directly or the datalayer webservice
+#if true then webservice details below should be filled
+webservice=false
+
+#local database params, do not fill if you are using datalayer webservice
+dburl = localhost:3306
+dbname = robustwp1
+username = root
+password = password
+repoSQLSchema=..\\..\\..\\repository\\robust.sql
+
+#Datalayer webservice details, is not needed if using local database.
+url=http://robust-www.softwaremind.pl/robust-ro-dataservice-ws-1.2-SNAPSHOT/robustRODataService?wsdl
+#url=http://localhost/robust-ro-dataservice-ws-1.2-SNAPSHOT/robustRODataService?wsdl
+namespace=http://dataservice.ws.robust.swmind.pl/
+localpart=RODataServiceWSImplService
+
+
+    predname = Gibbs Sampler
+    predDesc = Predicts the likelihood of binary events
+    predVer = 1.2
+    predURI = http://localhost:8190/riskPredictorServiceWWW12Demo/service
+    predNamespace = http://www12demo.predictorservice.robust.itinnovation.soton.ac.uk/
+    predSvcname = PredictorServiceImplService
+    predPortname = PredictorServiceImplPort
+
+
+    pred1demoname = WWW 2012 Demo Risk Predictor
+    pred1demoDesc = A predictor service for demonstration purposes only
+    pred1demoVer = 1.1
+    pred1demoURI = http://localhost:8190/riskPredictorServiceWWW12Demo/service
+    pred1demoNamespace = http://www12demo.predictorservice.robust.itinnovation.soton.ac.uk/
+    pred1demoSvcname = PredictorServiceImplService
+    pred1demoPortname = PredictorServiceImplPort
+
+
+    pred2demoname = WWW 2012 Demo Opportunity Predictor
+    pred2demoDesc = A predictor service for demonstration purposes only
+    pred2demoVer = 1.1
+    pred2demoURI = http://localhost:8190/opportunityPredictorServiceWWW12Demo/service
+    pred2demoNamespace = http://www12demo.predictorservice.robust.itinnovation.soton.ac.uk/
+    pred2demoSvcname = PredictorServiceImplService
+    pred2demoPortname = PredictorServiceImplPort
+
+
+    predchurnname = Churn Predictor
+    predchurnDesc = Predicts whether users are likely to churn (become inactive and leave the community)
+    predchurnVer = 1.2
+    predchurnURI = http://localhost:8190/opportunityPredictorServiceWWW12Demo/service
+    predchurnNamespace = http://www12demo.predictorservice.robust.itinnovation.soton.ac.uk/
+    predchurnSvcname = PredictorServiceImplService
+    predchurnPortname = PredictorServiceImplPort
+
+
+    simPredname = Simulation Predictor
+    simPredVer = 1.0
+    simPredDesc = Agent-based simulation model that is capable of performing event predictions
+    simPredURI = http://localhost:8190/predictorCatSimService/predictorCatSimService
+    simPredNamespace = http://catsim.predictorservice.robust.itinnovation.soton.ac.uk/
+    simPredServiceName = PredictorServiceImplService
+    simPredPortName = PredictorServiceImplPort

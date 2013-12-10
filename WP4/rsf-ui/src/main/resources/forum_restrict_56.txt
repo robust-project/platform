@@ -1,0 +1,15 @@
+{
+  "templateName": "Policy Forum Restriction 56",
+  "useCurrentTimeAsStartDate": false,
+  "startYear": 2009,
+  "startMonth": 12,
+  "startDay": 1,
+  "startHour": 8,
+  "endYear": 2010,
+  "endMonth": 4,
+  "endDay": 1,
+  "endHour": 8,
+  "numberOfAgents": 32723,
+  "numberOfForums": 20,
+  "Forum56": 50
+}

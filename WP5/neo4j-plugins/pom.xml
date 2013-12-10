@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.deri.uimr</groupId>
+    <artifactId>parent-pom</artifactId>
+    <version>4.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>neo4j-plugins</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>UIMR Neo4J Server Plugins</name>
+  <description>This software extends Neo4J server with useful managed/unmanaged plugins</description>
+
+  <developers>
+    <developer>
+      <id>hughro</id>
+      <name>Hugo Hromic</name>
+      <email>hugo.hromic@deri.org</email>
+      <organization>UIMR, DERI</organization>
+    </developer>
+  </developers>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.neo4j</groupId>
+      <artifactId>server-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+    </dependency>
+  </dependencies>
+</project>

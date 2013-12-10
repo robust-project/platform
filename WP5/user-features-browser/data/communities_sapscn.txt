@@ -1,0 +1,34 @@
+-1	(all communities)
+44	44: Process Integration
+50	50: ABAP, General
+56	56: SAP Business One SDK
+101	101: Service-Oriented Architecture
+161	161: SAP Business One Integration Technology
+197	197: Business Process Expert General Discussion
+198	198: Business Process Modeling Methodologies
+200	200: Organizational Change Management
+201	201: Standards
+210	210: Analytics
+226	226: SAP Discovery System for Enterprise SOA
+252	252: SAP Business One E-Commerce and Web CRM
+256	256: Governance, Risk and Compliance
+264	264: SAP Business One Core
+265	265: SAP Business One Product Development Collaboration
+270	270: Financial Performance Management – General (PCM, FC, Other)
+281	281: Sustainability
+319	319: Best Practice and Benchmarking
+353	353: SAP Business One Reporting & Printing
+354	354: SAP Business One Partner Solutions (Add-ons)
+400	400: International Financial Reporting Standard (IFRS)
+411	411: Operational Performance Management – General (Spend Performance, SCPM, Other)
+412	412: Business Planning and Consolidations, version for SAP NetWeaver
+413	413: Business Planning and Consolidations, version for the Microsoft Platform
+414	414: SAP Strategy Management
+418	418: SAP Business One - SAP Add-ons
+419	419: SAP Business One System Administration
+420	420: SAP Business One Training
+468	468: Green IT
+470	470: Manufacturing Execution (ME)
+482	482: ASAP Methodology and Project Management
+485	485: GS1 Standards and SAP
+486	486: Enterprise Social Systems

@@ -1,0 +1,27 @@
+--- ServiceContainer.py	2011-11-16 11:58:18.000000000 +0000
++++ ServiceContainer.py.patched	2011-11-16 11:55:46.000000000 +0000
+@@ -141,12 +141,12 @@
+         return SendFault(FaultFromException(e, 0, sys.exc_info()[2]), **kw)
+ 
+ 
+-def AsServer(port=80, services=()):
++def AsServer(address='', port=80, services=()):
+     '''port --
+        services -- list of service instances
+     '''
+-    address = ('', port)
+-    sc = ServiceContainer(address, services)
++    server_address = (address, port)
++    sc = ServiceContainer(server_address, services)
+     sc.serve_forever()
+ 
+ 
+@@ -374,7 +374,7 @@
+                                                 service_path)
+                 soapAddress = '<soap:address location="%s"/>' % serviceUrl
+                 wsdlre = re.compile('\<soap:address[^\>]*>',re.IGNORECASE)
+-                wsdl = re.sub(wsdlre,soapAddress,wsdl)
++                #wsdl = re.sub(wsdlre,soapAddress,wsdl)
+                 self.send_xml(wsdl)
+             else:
+                 self.send_error(404, "WSDL not available for that service [%s]." % self.path)

@@ -1,0 +1,43 @@
+# TiddlyWiki mailing list
+[tiddlywiki]
+engine    = mysql
+source    = tiddlywiki
+host      = ***CHANGE ME***
+user      = ***CHANGE ME***
+password  = ***CHANGE ME***
+dbname    = ***CHANGE ME***
+encoding  = utf8
+caching   = yes
+
+# Boards.ie forums
+[boardsie]
+engine    = mysql
+source    = boardsie
+host      = ***CHANGE ME***
+user      = ***CHANGE ME***
+password  = ***CHANGE ME***
+dbname    = ***CHANGE ME***
+encoding  = utf8
+caching   = yes
+
+# SAP Community Network (SCN)
+[sapscn]
+engine    = mysql
+source    = sapscn
+host      = ***CHANGE ME***
+user      = ***CHANGE ME***
+password  = ***CHANGE ME***
+dbname    = ***CHANGE ME***
+encoding  = utf8
+caching   = yes
+
+# Generic access to TiddlyWiki
+[gen_tiddlywiki]
+engine    = mysql
+source    = generic
+host      = ***CHANGE ME***
+user      = ***CHANGE ME***
+password  = ***CHANGE ME***
+dbname    = ***CHANGE ME***
+encoding  = utf8
+caching   = yes

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1</version>
+    </parent>
+
+    <groupId>pl.swmind.robust</groupId>
+    <artifactId>role-composition-visualization</artifactId>
+    <version>1.4-SNAPSHOT</version>
+    <name>Robust :: Role Composition Visualization :: Proxy</name>
+
+    <scm>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-role-composition-dashboard/trunk/</connection>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-role-composition-dashboard/trunk/</developerConnection>
+        <url>https://robust.softwaremind.pl/svn/WP6/robust-role-composition-dashboard/trunk/</url>
+    </scm>
+
+    <properties>
+        <cat.views.ver>1.5</cat.views.ver>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-components-viewEngine-spec-uif</artifactId>
+            <version>${cat.views.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-components-viewEngine-spec-catViews</artifactId>
+            <version>${cat.views.ver}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.activiti</groupId>
+                    <artifactId>activiti-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-components-viewEngine-impl-catUIComponents</artifactId>
+            <version>${cat.views.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.swmind.robust.webapp</groupId>
+            <artifactId>role-composition</artifactId>
+            <version>1.4</version>
+            <classifier>classes</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

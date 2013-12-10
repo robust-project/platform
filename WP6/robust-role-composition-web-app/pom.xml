@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pl.swmind.robust.webapp</groupId>
+    <artifactId>role-composition</artifactId>
+    <packaging>war</packaging>
+    <version>1.5-SNAPSHOT</version>
+    <name>Robust :: Role Composition Visualization :: Web Application</name>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gwt.plugin.version>2.2.0</gwt.plugin.version>
+        <slf4j.ver>1.6.1</slf4j.ver>
+        <springframework.ver>3.0.2.RELEASE</springframework.ver>
+        <cxf.ver>2.4.3</cxf.ver>
+        <tomcat-servlet-api.ver>7.0.39</tomcat-servlet-api.ver>
+        <cat.views.ver>1.5</cat.views.ver>
+    </properties>
+
+    <scm>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-role-composition-web-app/trunk/</connection>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-role-composition-web-app/trunk/</developerConnection>
+        <url>https://robust.softwaremind.pl/svn/WP6/robust-role-composition-web-app/trunk/</url>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <attachClasses>true</attachClasses>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.ver}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${project.basedir}/src/main/resources/robustBehaviourAnalysisService.wsdl</wsdl>
+                                    <wsdlLocation>classpath:robustBehaviourAnalysisService.wsdl</wsdlLocation>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/target/generated/src/main/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>local-deploy</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>tomcat-maven-plugin</artifactId>
+                        <configuration>
+                            <url>http://localhost:8080/manager/html</url>
+                            <server>TomcatServer</server>
+                            <path>/${artifactId}-${version}</path>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>update-widgetset</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>gwt-maven-plugin</artifactId>
+                        <version>${gwt.plugin.version}</version>
+                        <configuration>
+                            <webappDirectory>${project.build.directory}/${project.build.finalName}/VAADIN/widgetsets</webappDirectory>
+                            <extraJvmArgs>-Xmx128M -Xss1024k</extraJvmArgs>
+                            <runTarget>project-name</runTarget>
+                            <hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
+                            <noServer>true</noServer>
+                            <port>8080</port>
+                            <compileReport>false</compileReport>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>resources</goal>
+                                    <goal>compile</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.vaadin</groupId>
+                        <artifactId>vaadin-maven-plugin</artifactId>
+                        <version>1.0.2</version>
+                        <configuration>
+                            <extraJvmArgs>-Xmx128M -Xss1024k</extraJvmArgs>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>update-widgetset</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <repositories>
+
+        <!-- Vaadin main repository -->
+        <repository>
+            <id>vaadin-snapshots</id>
+            <url>http://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <!-- Vaadin plugins -->
+        <repository>
+            <id>vaadin-addons</id>
+            <url>http://maven.vaadin.com/vaadin-addons</url>
+        </repository>
+
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-components-viewEngine-impl-catUIExternalWidgetSets</artifactId>
+            <version>${cat.views.ver}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.vaadin.addons</groupId>
+                    <artifactId>svgcomponent</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.vaadin.addons</groupId>
+                    <artifactId>vaadin-timeline-agpl-3.0</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>${tomcat-servlet-api.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${springframework.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${springframework.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springframework.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

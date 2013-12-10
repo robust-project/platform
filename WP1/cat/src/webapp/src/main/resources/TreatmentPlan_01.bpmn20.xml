@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+  xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:activiti="http://activiti.org/bpmn"
+  targetNamespace="http://activiti.org/bpmn20">
+	
+  <!--
+  Process ID and NAME conventions are very important:
+    (1) NO spaces are allowed in either then ID or NAME attributes
+    (2) The ID MUST start with 'Treatment_' and follow with a unique UUID value
+    (3) Don't forget to refer to the same ID value in the bpmndi:BPMNDiagram top-level
+  
+  -->
+	<process id="Treatment_01ac6047-4f13-4959-aa52-a9b392edefb0" name="ROBUSTTreatmentExample">
+	
+	<!-- Top level listener____________________________________________________________ -->
+  <extensionElements>
+    <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="start" />
+    <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="end" />
+	</extensionElements>
+	
+	<startEvent id="T1" />
+	<endEvent id="T9" />
+	
+    <!-- Activities____________________________________________________________________ -->
+    <userTask id="A1" name="Select top contributors">
+      <documentation>Find those users whom contribute most significantly in the online community.</documentation>
+      
+      <extensionElements>
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+      </extensionElements>
+    </userTask>
+    
+    <subProcess id="S1" name="Evaluate community">
+      
+      <startEvent id="T2" />
+      <endEvent id="T3" />
+      
+      <exclusiveGateway id="G1">
+          <extensionElements>
+              <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="start" />
+              <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="end" />
+          </extensionElements>
+      </exclusiveGateway>
+      
+      
+      <userTask id="A2" name="Select evaluation">
+        <documentation>Select evaluation technique (1 of 2).</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+          
+          <activiti:formProperty id="ICM" name="Interview community members" type="boolean" value="false"/>
+          <activiti:formProperty id="RCC" name="Review community content" type="boolean" value="false"/>
+        </extensionElements>        
+      </userTask>
+      
+      <userTask id="A3" name="Interview community members">
+        <documentation>Contact top contributors to discuss their views on why, generally, contributions are currently low in the community.</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+        </extensionElements>
+      </userTask>
+      
+      <userTask id="A4" name="Review community content">
+        <documentation>Review recent contributions by top contributors and related their related responses to assess impact.</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+        </extensionElements>
+      </userTask>
+      
+    </subProcess>
+    
+    <userTask id="A5" name="Select treatment response">
+      <documentation>Select a treatment response to the current risk (1 of 3)</documentation>
+
+      <extensionElements>
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+      </extensionElements>  
+    </userTask>
+    
+    <exclusiveGateway id="G2">
+          <extensionElements>
+              <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="start" />
+              <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="end" />
+          </extensionElements>
+    </exclusiveGateway>
+    
+    <userTask id="A6" name="Close community">
+      <documentation>Begin the process for closing the current community down.</documentation>
+      
+      <extensionElements>
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+        <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+      </extensionElements>
+    </userTask>
+    
+    <endEvent id="T4" />
+    
+    <subProcess id="S2" name="Modify existing community content">
+    
+      <startEvent id="T5" />
+      <endEvent id="T6" />
+      
+      <userTask id="A7" name="Choose modification action">
+        <documentation>Select a community correction reponse (1 to 2 of 2)</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+        </extensionElements>
+      </userTask>
+      
+      <exclusiveGateway id="G3">
+          <extensionElements>
+              <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="start" />
+              <activiti:executionListener delegateExpression="${ActivitiProcExeListener}" event="end" />
+          </extensionElements>
+      </exclusiveGateway>
+      
+      <userTask id="A8" name="Manage unpopular member">
+        <documentation>Contact unpopular member to discuss their recent behaviour within the community.</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+        </extensionElements>
+      </userTask>
+      
+      <userTask id="A9" name="Remove unwanted content">
+        <documentation>Remove content from the community that has been marked as inappropriate.</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+        </extensionElements>
+      </userTask>
+      
+      <exclusiveGateway id="G4">
+      </exclusiveGateway>
+      
+    </subProcess>
+    
+    <subProcess id="S3" name="Motivate community">
+      
+      <startEvent id="T7" />
+      <endEvent id="T8" />
+      
+      <userTask id="A10" name="Select incentives">
+        <documentation>Select actions that may motivate community to contribute further (1 to 3 of 3)</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+        </extensionElements>
+      </userTask>
+    
+      <parallelGateway id="G5" />
+      
+      <userTask id="A11" name="Modify community topic">
+        <documentation>Change the topic of the community discussion so interest is raised.</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+        </extensionElements>
+      </userTask>
+      
+      <userTask id="A12" name="Add new community topic">
+        <documentation>Add a further topic for discussion to premote interest.</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+        </extensionElements>
+      </userTask>
+      
+      <userTask id="A13" name="Identify new incentives">
+        <documentation>Survey community to gather improvements for the online community environment.</documentation>
+        
+        <extensionElements>
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="create" />
+          <activiti:taskListener delegateExpression="${ActivitiProcTaskListener}" event="complete" />
+        </extensionElements>
+      </userTask>
+      
+      <parallelGateway id="G6" />
+    
+    </subProcess>
+    
+    <!-- Flows_________________________________________________________________________ -->
+    <sequenceFlow id="F1" sourceRef="T1" targetRef="A1">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F2" sourceRef="A1" targetRef="S1">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F3" sourceRef="T2" targetRef="A2">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F4" sourceRef="A2" targetRef="G1">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F5" sourceRef="G1" targetRef="A3">
+    
+      <conditionExpression xsi:type="tFormalExpression">
+        ${ActivitiProcExeListener.isSelected("A3", execution)}
+      </conditionExpression>
+    
+    </sequenceFlow>
+    
+    <sequenceFlow id="F6" sourceRef="G1" targetRef="A4">
+    
+      <conditionExpression xsi:type="tFormalExpression">
+        ${ActivitiProcExeListener.isSelected("A4", execution)}
+      </conditionExpression>
+    
+    </sequenceFlow>
+    
+    <sequenceFlow id="F7" sourceRef="A3" targetRef="T3">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F8" sourceRef="A4" targetRef="T3">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F9" sourceRef="S1" targetRef="A5">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F10" sourceRef="A5" targetRef="G2">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F11" sourceRef="G2" targetRef="A6">
+    
+      <conditionExpression xsi:type="tFormalExpression">
+        ${ActivitiProcExeListener.isSelected("A6", execution)}
+      </conditionExpression>
+        
+    </sequenceFlow>
+    
+    <!-- <sequenceFlow id="F12" sourceRef="G2" targetRef="T9"> -->
+    <sequenceFlow id="F12" sourceRef="G2" targetRef="S3">
+    
+      <conditionExpression xsi:type="tFormalExpression">
+        ${ActivitiProcExeListener.isSelected("S3", execution)}
+      </conditionExpression>
+    
+    </sequenceFlow>
+    
+    <sequenceFlow id="F13" sourceRef="G2" targetRef="S2">
+    
+      <conditionExpression xsi:type="tFormalExpression">
+        ${ActivitiProcExeListener.isSelected("S2", execution)}
+      </conditionExpression>
+    
+    </sequenceFlow>
+    
+    <sequenceFlow id="F14" sourceRef="A6" targetRef="T4">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F15" sourceRef="T5" targetRef="A7">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F16" sourceRef="A7" targetRef="G3">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F17" sourceRef="G3" targetRef="A8">
+    
+      <conditionExpression xsi:type="tFormalExpression">
+        ${ActivitiProcExeListener.isSelected("A8", execution)}
+      </conditionExpression>
+    
+    </sequenceFlow>
+    
+    <sequenceFlow id="F18" sourceRef="G3" targetRef="A9">
+    
+      <conditionExpression xsi:type="tFormalExpression">
+        ${ActivitiProcExeListener.isSelected("A9", execution)}
+      </conditionExpression>
+    
+    </sequenceFlow>
+    
+    <sequenceFlow id="F19" sourceRef="A8" targetRef="G4">    
+    </sequenceFlow>
+    
+    <sequenceFlow id="F20" sourceRef="A9" targetRef="G4">    
+    </sequenceFlow>
+    
+    <sequenceFlow id="F21" sourceRef="G4" targetRef="T6">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F22" sourceRef="S2" targetRef="S3">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F23" sourceRef="T7" targetRef="A10">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F24" sourceRef="A10" targetRef="G5">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F25" sourceRef="G5" targetRef="A11"> 
+    </sequenceFlow>
+    
+    <sequenceFlow id="F26" sourceRef="G5" targetRef="A12">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F27" sourceRef="G5" targetRef="A13">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F28" sourceRef="A11" targetRef="G6">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F29" sourceRef="A12" targetRef="G6">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F30" sourceRef="A13" targetRef="G6">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F31" sourceRef="G6" targetRef="T8">
+    </sequenceFlow>
+    
+    <sequenceFlow id="F32" sourceRef="S3" targetRef="T9">
+    </sequenceFlow>
+    
+	</process>
+	
+	<!-- Layout____________________________________________________________________ -->
+	<bpmndi:BPMNDiagram id="diagram">
+    <bpmndi:BPMNPlane bpmnElement="Treatment_01ac6047-4f13-4959-aa52-a9b392edefb0" id="RTEMainPlane">
+    
+    <!-- Nodes_________________________________________________ -->
+    <bpmndi:BPMNShape bpmnElement="T1" id="NT1">
+			<omgdc:Bounds width="40.0" height="40.0" x="0.0" y="190.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A1" id="NA1">
+			<omgdc:Bounds width="160.0" height="60.0" x="100" y="180.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="S1" id="NS1">
+			<omgdc:Bounds width="720.0" height="420.0" x="320.0" y="0.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T2" id="NT2">
+			<omgdc:Bounds width="40.0" height="40.0" x="360.0" y="190.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A2" id="NA2">
+			<omgdc:Bounds width="160.0" height="60.0" x="440.0" y="180.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="G1" id="NG1">
+			<omgdc:Bounds width="40.0" height="40.0" x="660.0" y="190.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A3" id="NA3">
+			<omgdc:Bounds width="160.0" height="60.0" x="740.0" y="60.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A4" id="NA4">
+			<omgdc:Bounds width="160.0" height="60.0" x="740.0" y="300.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T3" id="NT3">
+			<omgdc:Bounds width="40.0" height="40.0" x="960.0" y="190.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A5" id="NA5">
+      <omgdc:Bounds width="160.0" height="60.0" x="1060.0" y="180.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="G2" id="NG2">
+      <omgdc:Bounds width="40.0" height="40.0" x="1280.0" y="190.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A6" id="NA6">
+      <omgdc:Bounds width="160.0" height="60.0" x="1360.0" y="60.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T4" id="NT4">
+      <omgdc:Bounds width="40.0" height="40.0" x="1580.0" y="70.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="S2" id="NS2">
+      <omgdc:Bounds width="800.0" height="340.0" x="1440.0" y="180.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T5" id="NT5">
+      <omgdc:Bounds width="40.0" height="40.0" x="1480.0" y="330.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A7" id="NA7">
+      <omgdc:Bounds width="160.0" height="60.0" x="1580.0" y="320.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="G3" id="NG3">
+      <omgdc:Bounds width="40.0" height="40.0" x="1800.0" y="330.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A8" id="NA8">
+      <omgdc:Bounds width="160.0" height="60.0" x="1860.0" y="260.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A9" id="NA9">
+      <omgdc:Bounds width="160.0" height="60.0" x="1860.0" y="380.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="G4" id="NG4">
+      <omgdc:Bounds width="40.0" height="40.0" x="2040.0" y="330.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T6" id="NT6">
+      <omgdc:Bounds width="40.0" height="40.0" x="2160.0" y="330.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="S3" id="NS3">
+      <omgdc:Bounds width="880.0" height="380.0" x="1440.0" y="620.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T7" id="NT7">
+      <omgdc:Bounds width="40.0" height="40.0" x="1480.0" y="790.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A10" id="NA10">
+      <omgdc:Bounds width="160.0" height="60.0" x="1580.0" y="780.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="G5" id="NG5">
+      <omgdc:Bounds width="40.0" height="40.0" x="1800.0" y="790.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A11" id="NA11">
+      <omgdc:Bounds width="160.0" height="60.0" x="1880.0" y="660.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A12" id="NA12">
+      <omgdc:Bounds width="160.0" height="60.0" x="1880.0" y="780.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="A13" id="NA13">
+      <omgdc:Bounds width="160.0" height="60.0" x="1880.0" y="900.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="G6" id="NG6">
+      <omgdc:Bounds width="40.0" height="40.0" x="2080.0" y="790.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T8" id="NT8">
+      <omgdc:Bounds width="40.0" height="40.0" x="2240.0" y="790.0" />
+    </bpmndi:BPMNShape>
+    
+    <bpmndi:BPMNShape bpmnElement="T9" id="NT9">
+      <omgdc:Bounds width="40.0" height="40.0" x="2420.0" y="790.0" />
+    </bpmndi:BPMNShape>
+    
+ 
+    <!-- Edges__________________________________________________ -->
+    <bpmndi:BPMNEdge bpmnElement="F1" id="EF1">
+      <omgdi:waypoint x="40.0" y="210.0" />
+			<omgdi:waypoint x="100.0" y="210.0" />
+		</bpmndi:BPMNEdge>
+		
+		<bpmndi:BPMNEdge bpmnElement="F2" id="EF2">
+      <omgdi:waypoint x="260.0" y="210.0" />
+			<omgdi:waypoint x="320.0" y="210.0" />
+		</bpmndi:BPMNEdge>
+		
+		<bpmndi:BPMNEdge bpmnElement="F3" id="EF3">
+      <omgdi:waypoint x="400.0" y="210.0" />
+			<omgdi:waypoint x="440.0" y="210.0" />
+		</bpmndi:BPMNEdge>
+		
+		<bpmndi:BPMNEdge bpmnElement="F4" id="EF4">
+      <omgdi:waypoint x="600.0" y="210.0" />
+			<omgdi:waypoint x="660.0" y="210.0" />
+		</bpmndi:BPMNEdge>
+		
+		<bpmndi:BPMNEdge bpmnElement="F5" id="EF5">
+      <omgdi:waypoint x="680.0" y="190.0" />
+			<omgdi:waypoint x="740.0" y="90.0" />
+		</bpmndi:BPMNEdge>
+		
+		<bpmndi:BPMNEdge bpmnElement="F6" id="EF6">
+      <omgdi:waypoint x="680.0" y="230.0" />
+			<omgdi:waypoint x="740.0" y="330.0" />
+		</bpmndi:BPMNEdge>
+		
+		<bpmndi:BPMNEdge bpmnElement="F7" id="EF7">
+      <omgdi:waypoint x="900.0" y="90.0" />
+			<omgdi:waypoint x="960.0" y="210.0" />
+		</bpmndi:BPMNEdge>
+		
+		<bpmndi:BPMNEdge bpmnElement="F8" id="EF8">
+      <omgdi:waypoint x="900.0" y="330.0" />
+			<omgdi:waypoint x="960.0" y="210.0" />
+		</bpmndi:BPMNEdge>
+		
+		<bpmndi:BPMNEdge bpmnElement="F9" id="EF9">
+      <omgdi:waypoint x="1040.0" y="210.0" />
+      <omgdi:waypoint x="1060.0" y="210.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F10" id="EF10">
+      <omgdi:waypoint x="1220.0" y="210.0" />
+      <omgdi:waypoint x="1280.0" y="210.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F11" id="EF11">
+      <omgdi:waypoint x="1300.0" y="190.0" />
+      <omgdi:waypoint x="1360.0" y="90.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F12" id="EF12">
+      <omgdi:waypoint x="1300.0" y="230.0" />
+      <omgdi:waypoint x="1300.0" y="810.0" />
+      <omgdi:waypoint x="1440.0" y="810.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F13" id="EF13">
+      <omgdi:waypoint x="1320.0" y="210.0" />
+      <omgdi:waypoint x="1440.0" y="210.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F14" id="EF14">
+      <omgdi:waypoint x="1520.0" y="90.0" />
+      <omgdi:waypoint x="1580.0" y="90.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F15" id="EF15">
+      <omgdi:waypoint x="1520.0" y="350.0" />
+      <omgdi:waypoint x="1580.0" y="350.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F16" id="EF16">
+      <omgdi:waypoint x="1740.0" y="350.0" />
+      <omgdi:waypoint x="1800.0" y="350.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F17" id="EF17">
+      <omgdi:waypoint x="1820" y="330.0" />
+      <omgdi:waypoint x="1860.0" y="290.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F18" id="EF18">
+      <omgdi:waypoint x="1820" y="370.0" />
+      <omgdi:waypoint x="1860.0" y="410.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F19" id="EF19">
+      <omgdi:waypoint x="2020" y="290.0" />
+      <omgdi:waypoint x="2060.0" y="330.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F20" id="EF20">
+      <omgdi:waypoint x="2020" y="410.0" />
+      <omgdi:waypoint x="2060.0" y="370.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F21" id="EF21">
+      <omgdi:waypoint x="2080" y="350.0" />
+      <omgdi:waypoint x="2160.0" y="350.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F22" id="EF22">
+      <omgdi:waypoint x="1840" y="520.0" />
+      <omgdi:waypoint x="1840.0" y="620.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F23" id="EF23">
+      <omgdi:waypoint x="1520.0" y="810.0" />
+      <omgdi:waypoint x="1580.0" y="810.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F24" id="EF24">
+      <omgdi:waypoint x="1740.0" y="810.0" />
+      <omgdi:waypoint x="1800.0" y="810.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F25" id="EF25">
+      <omgdi:waypoint x="1820.0" y="790.0" />
+      <omgdi:waypoint x="1880.0" y="690.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F26" id="EF26">
+      <omgdi:waypoint x="1840.0" y="810.0" />
+      <omgdi:waypoint x="1880.0" y="810.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F27" id="EF27">
+      <omgdi:waypoint x="1820.0" y="830.0" />
+      <omgdi:waypoint x="1880.0" y="930.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F28" id="EF28">
+      <omgdi:waypoint x="2040.0" y="690.0" />
+      <omgdi:waypoint x="2100.0" y="790.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F29" id="EF29">
+      <omgdi:waypoint x="2040.0" y="810.0" />
+      <omgdi:waypoint x="2080.0" y="810.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F30" id="EF30">
+      <omgdi:waypoint x="2040.0" y="930.0" />
+      <omgdi:waypoint x="2100.0" y="830.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F31" id="EF31">
+      <omgdi:waypoint x="2120.0" y="810.0" />
+      <omgdi:waypoint x="2240.0" y="810.0" />
+    </bpmndi:BPMNEdge>
+    
+    <bpmndi:BPMNEdge bpmnElement="F32" id="EF32">
+      <omgdi:waypoint x="2320.0" y="810.0" />
+      <omgdi:waypoint x="2420.0" y="810.0" />
+    </bpmndi:BPMNEdge>
+    
+    </bpmndi:BPMNPlane>
+	</bpmndi:BPMNDiagram>
+	
+</definitions>

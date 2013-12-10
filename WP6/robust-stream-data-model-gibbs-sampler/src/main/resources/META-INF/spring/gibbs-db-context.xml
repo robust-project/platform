@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="gibbsCorePropertiesConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+        <property name="locations">
+            <list>
+                <value>classpath:streamplayer.properties</value>
+            </list>
+        </property>
+
+        <!--<property name="properties">-->
+            <!--<props>-->
+                <!--<prop key="stream.hibernate.show_sql">false</prop>-->
+                <!--<prop key="stream.hibernate.format_sql">true</prop>-->
+                <!--<prop key="stream.db.url">jdbc:postgresql://localhost/scn_ssplayer</prop>-->
+                <!--<prop key="stream.db.user">robustuser</prop>-->
+                <!--<prop key="stream.db.pass">robustpassword</prop>-->
+                <!--<prop key="stream.db.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>-->
+                <!--<prop key="stream.db.driver">org.postgresql.Driver</prop>-->
+                <!--<prop key="stream.dateformat">EEE MMM d HH:mm:ss z yyyy</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    </bean>
+
+    <bean id="gibbsSessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="streamDataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>pl.swmind.robust.stream.gibbs.dto.Message</value>
+                <value>pl.swmind.robust.stream.gibbs.dto.MessagePoint</value>
+                <value>pl.swmind.robust.stream.gibbs.dto.Thread</value>
+            </list>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${stream.db.dialect}</prop>
+                <prop key="hibernate.jdbc.batch_size">50</prop>
+                <prop key="hibernate.default_batch_fetch_size">20</prop>
+                <prop key="hibernate.jdbc.order_inserts">true</prop>
+                <prop key="hibernate.jdbc.order_updates">true</prop>
+                <prop key="hibernate.show_sql">${stream.hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">${stream.hibernate.format_sql}</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="streamDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${stream.db.driver}" />
+        <property name="url" value="${stream.db.url}" />
+        <property name="username" value="${stream.db.user}" />
+        <property name="password" value="${stream.db.pass}" />
+        <property name="initialSize" value="10" />
+        <property name="maxActive" value="15" />
+        <property name="maxWait" value="10000" />
+        <property name="testWhileIdle" value="true" />
+    </bean>
+
+    <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="java.util.Date">
+                    <bean class="org.springframework.beans.propertyeditors.CustomDateEditor">
+                        <constructor-arg index="0">
+                            <bean class="java.text.SimpleDateFormat">
+                                <constructor-arg value="${stream.dateformat}"/>
+                            </bean>
+                        </constructor-arg>
+                        <constructor-arg index="1" value="false"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>

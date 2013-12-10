@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>eu.robust.wp3.analysis</groupId>
+    <artifactId>robust-behaviour-analysis-service-ws</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Robust WP3 ROBUST-D3.2-WS Apcahe CFX WebService</name>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.2-SNAPSHOT</version>
+    </parent>
+
+    <!-- Plugin configuration -->
+    <build>
+        <finalName>${pom.artifactId}-${pom.version}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <version>${cxf.ver}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-simple</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <className>pl.swmind.robust.ws.behaviouranalysis.BehaviourAnalysisService</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <!--<attachClasses>true</attachClasses>-->
+                    <!--<archive>-->
+                        <!--<manifest>-->
+                            <!--<mainClass>eu.project.robust.behaviour.corpora.SAP.features.SAPBehaviourDimensionsBuilder</mainClass>-->
+                        <!--</manifest>-->
+                    <!--</archive>-->
+
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- Apache CXF dependencies -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+
+
+        <!-- Spring Dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>2.5.6</version>
+        </dependency>
+
+        <!-- logging -->
+         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.13</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+        <dependency>
+            <groupId>colt</groupId>
+            <artifactId>colt</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>weka</groupId>
+            <artifactId>weka-core</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+          <groupId>net.sf.jung</groupId>
+          <artifactId>jung-graph-impl</artifactId>
+          <version>2.0.1</version>
+        </dependency>
+        <dependency>
+          <groupId>net.sf.jung</groupId>
+          <artifactId>jung-algorithms</artifactId>
+          <version>2.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+        </dependency>
+
+    </dependencies>
+    <scm>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP3/Code/ROBUST-D3.2-WS/trunk</connection>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP3/Code/ROBUST-D3.2-WS/trunk</developerConnection>
+        <url>https://robust.softwaremind.pl/svn/WP3/Code/ROBUST-D3.2-WS/trunk</url>
+    </scm>
+</project>

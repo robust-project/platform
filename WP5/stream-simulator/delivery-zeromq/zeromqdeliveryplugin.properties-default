@@ -1,0 +1,2 @@
+# ZeroMQ socket binding (default: tcp://*:5556)
+#socket_binding = ipc:///tmp/streamsim.socket

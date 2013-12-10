@@ -1,0 +1,172 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>uk.ac.soton.itinnovation.robust.sim.ws</groupId>
+    <artifactId>catsim-ws</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+	
+	<properties>
+		<!-- General project build specific properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<cat.maven.compiler>3.1</cat.maven.compiler>
+        <cat.java.version>1.6</cat.java.version>
+		<cat.maven.resources>2.4.3</cat.maven.resources>
+		<sim.wagon.ssh.version>2.4</sim.wagon.ssh.version>
+  
+        <!-- Other library variables -->
+        <catsim.ver>0.0.5</catsim.ver>
+		<cat.ver>1.6</cat.ver>
+        <cat.log4j.ver>1.2.16</cat.log4j.ver>
+        <cxf.ver>2.6.1</cxf.ver>
+        <spring.ver>3.1.0.RELEASE</spring.ver>
+    </properties>
+    
+    <!-- 3rd party repositories -->
+    <repositories>
+
+        <repository>
+            <id>Robust</id>
+            <url>http://robust.softwaremind.pl/mvn/content/groups/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+  
+    </repositories>
+
+    <!-- Information for CI - where to deploy release version -->
+    <distributionManagement>
+		<repository>
+			<id>itinnovation-simulationlibraries-deploy</id>
+			<url>scpexe://altano.it-innovation.soton.ac.uk/var/www/maven2/release/SimulationLibraries</url>
+		</repository>
+	</distributionManagement>
+
+    <!--  Information for CI - where to tag and commit the updated code -->
+    <!--  please update location of your project (WP number) -->
+    <scm>
+        <!--TODO fill with svn adress-->
+        <connection>scm:svn:</connection>
+        <developerConnection>scm:svn:</developerConnection>
+        <url></url>
+    </scm>
+
+    <build>
+        <finalName>catSimService-${pom.version}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${cat.maven.compiler}</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>${cat.java.version}</source>
+                    <target>${cat.java.version}</target>
+                </configuration>
+            </plugin>
+            <!-- -->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <version>${cxf.ver}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-simple</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <className>uk.ac.soton.itinnovation.robust.cat.common.sim.ISimulationService</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- -->
+        </plugins>
+		
+		<extensions>
+			<!-- Enabling the use of FTP -->
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh-external</artifactId>
+				<version>${sim.wagon.ssh.version}</version>
+			</extension>
+		</extensions>
+    </build>
+
+    <!-- Dependency definitions -->
+    <dependencies>
+
+		<!-- CAT Sim dependency -->
+		<dependency>
+			<groupId>uk.ac.soton.itinnovation.robust</groupId>
+			<artifactId>catsim-sap-agg-model</artifactId>
+			<version>${catsim.ver}</version>
+		</dependency>
+		
+        <!-- CAT dependencies -->
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-common</artifactId>
+            <version>${cat.ver}</version>
+        </dependency>
+		
+		<!-- Apache commons IO -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+        
+        <!-- Apache CXF dependencies -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.ver}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.ver}</version>
+        </dependency>
+
+        <!-- Spring Dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.ver}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.ver}</version>
+        </dependency>
+        
+        <!-- Logging -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+			<version>${cat.log4j.ver}</version>
+        </dependency>
+
+    </dependencies>
+</project>
+

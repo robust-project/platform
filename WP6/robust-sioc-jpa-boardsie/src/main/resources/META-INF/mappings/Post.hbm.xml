@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping
+    package="pl.swmind.robust.sioc.model"
+    default-lazy="true">
+
+    <class
+        name="Post"
+        table="posts"
+        batch-size="10">
+
+        <id
+            name="uriFromBigInt"
+            type="java.lang.Long"
+            column="postid"
+            />
+
+        <set name="hasReply" table="replies" fetch="select">
+            <key column="origpostid"/>
+            <many-to-many column="replyingpostid" unique="true" class="Post"/>
+        </set>
+
+        <many-to-one name="hasContainer" class="Thread" fetch="select">
+            <column name="threadid" />
+        </many-to-one>
+
+        <property
+            name="title"
+            type="string"
+            column="title"
+            />
+
+        <many-to-one name="hasCreator" class="UserAccount" fetch="select">
+            <column name="userid" />
+        </many-to-one>
+
+        <property
+            name="created"
+            type="java.util.Date"
+            column="posteddate"
+            />
+
+        <property
+            name="contentFromBlob"
+            type="java.sql.Blob"
+            >
+            <column name="content" sql-type="blob" />
+        </property>
+
+        <join table="replies" fetch="select" optional="true">
+            <key column="replyingpostid"/>
+
+            <many-to-one name="replyOf" class="Post" fetch="select">
+                <column name="origpostid" />
+            </many-to-one>
+        </join>
+    </class>
+</hibernate-mapping>

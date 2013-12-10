@@ -1,0 +1,179 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pl.swmind.robust.ws</groupId>
+    <artifactId>robust-ro-dataservice-ws</artifactId>
+    <packaging>war</packaging>
+    <version>1.5</version>
+    <name>robust-ro-dataservice-ws</name>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1</version>
+    </parent>
+	
+	<properties>
+        <cat.version>1.5</cat.version>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
+    </properties>
+
+    <!--  please put the description here -->
+    <description>Description.</description>
+
+    <!--  please put information about the developers here -->
+    <developers>
+        <developer>
+            <name>Rafal Janik</name>
+        </developer>
+    </developers>
+
+
+    <!--  Information for CI - where to deploy release version -->
+    <distributionManagement>
+        <repository>
+            <id>Robust</id>
+            <name>Robust Repository</name>
+            <url>
+                http://robust.softwaremind.pl/mvn/content/repositories/releases
+            </url>
+        </repository>
+    </distributionManagement>
+
+    <!--  Information for CI - where to tag and commit the updated code -->
+    <!--  please update location of your project (WP number) -->
+    <scm>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-ro-dataservice-ws/trunk</connection>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-ro-dataservice-ws/trunk</developerConnection>
+        <url>https://robust.softwaremind.pl/svn/WP6/robust-ro-dataservice-ws/trunk</url>
+    </scm>
+
+    <build>
+        <finalName>${pom.artifactId}-${pom.version}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <version>${cxf.ver}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-simple</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <!--<className>pl.swmind.robust.ws.ws.CommunityServiceWS</className>-->
+                            <className>pl.swmind.robust.ws.dataservice.RODataServiceWS</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Dependency definitions -->
+    <dependencies>
+
+        <!-- Apache CXF dependencies -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+
+        <!-- Spring Dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>3.0.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.8.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-models-riskModel</artifactId>
+            <version>${cat.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-common</artifactId>
+            <version>${cat.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-models-treatmentModel</artifactId>
+            <version>${cat.version}</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-dataProviders-riskrepo-dataLayer</artifactId>
+            <!--<groupId>uk.ac.soton.itinnovation.robust.cat</groupId>-->
+            <!--<artifactId>robust-cat-core-dataProviders-dataLayer</artifactId>-->
+            <version>${cat.version}</version>
+        </dependency>
+
+
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+
+</project>
+

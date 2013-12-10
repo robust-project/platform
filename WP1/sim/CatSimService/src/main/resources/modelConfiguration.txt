@@ -1,0 +1,28 @@
+{
+  "templateName": "Default Model Configuration Template",
+  "numberOfSimulationDays": 7,
+  "historyDataSnapshotDurationInDays": 7,
+  "simulationStartDate": "01/01/2008",
+  "numBootstrapSnapshots": 1,
+  "forumID": "http://forums.sdn.sap.com/uim/forum/264#id",
+  "calibrationModeEnabled": true,
+  "predictionCreatedThreadsSnapshotsNumber": 3,
+  "forecastedMonthOffset": 0,
+  "numberOfSimulationRepetitions": 2,
+  "useCurrentTimeAsStartDate": true,
+/*  "historyDataStartPeriod": "01/01/2008", 
+  "historyDataEndPeriod": "01/06/2009", */
+  "tresholdNumberOfThreadsToAnswer": 25,
+  "behaviouralRule1Active": false,
+  "initialiseWithUnansweredThreadsFromHistoryData": true,
+  "unresolvedThreadExpiryDays": 30,  
+  "threadReplyRatioUpdate": 1.0,
+  "threadCreationRatioUpdate": 1.0,
+  "removeTopLevelContributors": false,
+  "percentageOfTopLevelContributorsToRemove": 0,
+  "dropUserActivity": false,
+  "userToDropActivityOf": b16fc8c258dc893ac33d0ae30c25c925,
+  "userActivityDrop": 20,
+  "aggregationEnabled": true,
+  "aggregationThreshold": 0
+}

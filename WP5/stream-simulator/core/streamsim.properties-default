@@ -1,0 +1,38 @@
+# Number of events to hold in the queue (default: 250000)
+#events_queue_size = 500000
+
+# Delay (in milliseconds, fractionals accepted) before beginning the simulation
+# (default: 10000.0)
+#start_delay = 60000.0
+
+# Streaming mode (NORMAL -default-, CONSTANT_DELAY)
+#streaming_mode = CONSTANT_DELAY
+
+# [NORMAL mode] Stream speed rate factor (<1.0: slower, >1.0: faster, =1.0: real-time)
+# For example, using 2.0 here streams twice as fast as the original stream
+# (default: 1.0)
+#speed_rate = 2.0
+
+# [CONSTANT_DELAY mode] Constant entry delay (in milliseconds, fractionals accepted)
+# (default: 100.0)
+#constant_delay = 25.0
+
+# SourcePlugin class names (comma separated) to use (default: -empty-)
+#source_plugins = deri.uimr.streamsim.plugins.CSVFileSourcePlugin, \
+#                 com.domain.MySecondSourcePlugin
+
+# DeliveryPlugin class names (comma separated) to use (default: -empty-)
+#delivery_plugins = deri.uimr.streamsim.plugins.CSVStdOutDeliveryPlugin, \
+#                   com.domain.MySecondDeliveryPlugin
+
+#=====================================================================================
+# WebAdmin configuration
+
+# Enable/Disable the WebAdmin tool (default: true)
+#webadmin_enabled = false
+
+# Server listening host/address (default: localhost)
+#webadmin_host = 0.0.0.0
+
+# Server port (default: 12345)
+#webadmin_port = 8082

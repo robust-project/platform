@@ -1,0 +1,886 @@
+<wsdl:definitions xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://behaviouranalysis.ws.robust.swmind.pl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BehaviourAnalysisServiceImplService" targetNamespace="http://behaviouranalysis.ws.robust.swmind.pl/">
+    <wsdl:types>
+        <xs:schema xmlns:tns="http://behaviouranalysis.ws.robust.swmind.pl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://behaviouranalysis.ws.robust.swmind.pl/">
+            <xs:element name="classifyForumInWindow" type="tns:classifyForumInWindow"/>
+            <xs:element name="classifyForumInWindowResponse" type="tns:classifyForumInWindowResponse"/>
+            <xs:element name="classifyForumOnDate" type="tns:classifyForumOnDate"/>
+            <xs:element name="classifyForumOnDateResponse" type="tns:classifyForumOnDateResponse"/>
+            <xs:element name="deriveMacroComposition" type="tns:deriveMacroComposition"/>
+            <xs:element name="deriveMacroCompositionResponse" type="tns:deriveMacroCompositionResponse"/>
+            <xs:element name="deriveMicroComposition" type="tns:deriveMicroComposition"/>
+            <xs:element name="deriveMicroCompositionResponse" type="tns:deriveMicroCompositionResponse"/>
+            <xs:element name="deriveTSMacroCompositions" type="tns:deriveTSMacroCompositions"/>
+            <xs:element name="deriveTSMacroCompositionsResponse" type="tns:deriveTSMacroCompositionsResponse"/>
+            <xs:element name="deriveTSMicroCompositions" type="tns:deriveTSMicroCompositions"/>
+            <xs:element name="deriveTSMicroCompositionsResponse" type="tns:deriveTSMicroCompositionsResponse"/>
+            <xs:element name="getCommunityIDs" type="tns:getCommunityIDs"/>
+            <xs:element name="getCommunityIDsResponse" type="tns:getCommunityIDsResponse"/>
+            <xs:element name="getHealthIndicators" type="tns:getHealthIndicators"/>
+            <xs:element name="getHealthIndicatorsResponse" type="tns:getHealthIndicatorsResponse"/>
+            <xs:element name="getPlatformIDs" type="tns:getPlatformIDs"/>
+            <xs:element name="getPlatformIDsResponse" type="tns:getPlatformIDsResponse"/>
+            <xs:element name="getRoleCount" type="tns:getRoleCount"/>
+            <xs:element name="getRoleCountResponse" type="tns:getRoleCountResponse"/>
+            <xs:element name="getRolePath" type="tns:getRolePath"/>
+            <xs:element name="getRolePathResponse" type="tns:getRolePathResponse"/>
+            <xs:element name="getRoleProportion" type="tns:getRoleProportion"/>
+            <xs:element name="getRoleProportionResponse" type="tns:getRoleProportionResponse"/>
+            <xs:element name="getStreamHealthIndicatorFeatures" type="tns:getStreamHealthIndicatorFeatures"/>
+            <xs:element name="getStreamHealthIndicatorFeaturesResponse" type="tns:getStreamHealthIndicatorFeaturesResponse"/>
+            <xs:element name="getTSHealthIndicators" type="tns:getTSHealthIndicators"/>
+            <xs:element name="getTSHealthIndicatorsResponse" type="tns:getTSHealthIndicatorsResponse"/>
+            <xs:element name="getTSRolePath" type="tns:getTSRolePath"/>
+            <xs:element name="getTSRolePathResponse" type="tns:getTSRolePathResponse"/>
+            <xs:element name="getTwitterUserRole" type="tns:getTwitterUserRole"/>
+            <xs:element name="getTwitterUserRoleResponse" type="tns:getTwitterUserRoleResponse"/>
+            <xs:element name="getUserIDs" type="tns:getUserIDs"/>
+            <xs:element name="getUserIDsResponse" type="tns:getUserIDsResponse"/>
+            <xs:element name="regressFormOnDate" type="tns:regressFormOnDate"/>
+            <xs:element name="regressFormOnDateResponse" type="tns:regressFormOnDateResponse"/>
+            <xs:element name="regressForumInWindow" type="tns:regressForumInWindow"/>
+            <xs:element name="regressForumInWindowResponse" type="tns:regressForumInWindowResponse"/>
+            <xs:complexType name="getPlatformIDs">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getPlatformIDsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getStreamHealthIndicatorFeatures">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="arg2" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getStreamHealthIndicatorFeaturesResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:streamHealthIndicatorFeatures"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="streamHealthIndicatorFeatures">
+                <xs:sequence>
+                    <xs:element name="clusterCoefficient" type="xs:double"/>
+                    <xs:element name="numActiveUsers" type="xs:int"/>
+                    <xs:element name="numInitiations" type="xs:int"/>
+                    <xs:element name="numPosts" type="xs:int"/>
+                    <xs:element name="numReplies" type="xs:int"/>
+                    <xs:element name="numSeeds" type="xs:int"/>
+                    <xs:element name="numUniqueBilateralConnections" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getTSRolePath">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="arg4" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getTSRolePathResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:getRolePathResultEntry"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getRolePathResultEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="role" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getRoleProportion">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element name="arg2" type="xs:int"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getRoleProportionResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="classifyForumInWindow">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element name="arg2" type="xs:int"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="arg4" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="classifyForumInWindowResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:deriveTSHealthClassifierResultEntry"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveTSHealthClassifierResultEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="healthClassifierResult" type="tns:healthClassifierResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="healthClassifierResult">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="communityID" type="xs:string"/>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element name="healthIndicator" type="xs:int"/>
+                    <xs:element name="healthIndicatorIncrease" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="regressFormOnDate">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element name="arg2" type="xs:int"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="regressFormOnDateResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:healthRegressorResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="healthRegressorResult">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="communityID" type="xs:string"/>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element name="healthIndicator" type="xs:int"/>
+                    <xs:element name="healthVal" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveTSMicroCompositions">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg2" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveTSMicroCompositionsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:deriveTSMicroCompositionsResultEntry"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveTSMicroCompositionsResultEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="userRoles" type="tns:userRoles"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="userRoles">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="communityID" type="xs:string"/>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element name="userToRoleMap">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element minOccurs="0" name="key" type="xs:string"/>
+                                            <xs:element minOccurs="0" name="value" type="xs:int"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="abstractMap">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="hashMap">
+                <xs:complexContent>
+                    <xs:extension base="tns:abstractMap">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="getRoleCount">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element name="arg2" type="xs:int"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getRoleCountResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="classifyForumOnDate">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element name="arg2" type="xs:int"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="classifyForumOnDateResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:healthClassifierResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getTSHealthIndicators">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg2" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getTSHealthIndicatorsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:deriveTSHealthIndicatorFeaturesResultEntry"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveTSHealthIndicatorFeaturesResultEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="healthIndicatorFeatures" type="tns:healthIndicatorFeatures"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="healthIndicatorFeatures">
+                <xs:sequence>
+                    <xs:element name="avgCC" type="xs:double"/>
+                    <xs:element name="churnRate" type="xs:double"/>
+                    <xs:element name="seedToNonSeedsProp" type="xs:double"/>
+                    <xs:element name="userCount" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="regressForumInWindow">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element name="arg2" type="xs:int"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="arg4" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="regressForumInWindowResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:deriveTSHealthRegressorResultEntry"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveTSHealthRegressorResultEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="healthRegressorResult" type="tns:healthRegressorResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getHealthIndicators">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg2" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getHealthIndicatorsResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:healthIndicatorFeatures"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getCommunityIDs">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getCommunityIDsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:deriveCommunityNameEntry"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveCommunityNameEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="communityID" type="xs:string"/>
+                    <xs:element minOccurs="0" name="communityName" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getUserIDs">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element name="arg2" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getUserIDsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveTSMacroCompositions">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg2" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveTSMacroCompositionsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:deriveTSMacroCompositionsResultEntry"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveTSMacroCompositionsResultEntry">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="composition" type="tns:composition"/>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="composition">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="communityID" type="xs:string"/>
+                    <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+                    <xs:element name="idToRoleMapping">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element minOccurs="0" name="key" type="xs:int"/>
+                                            <xs:element minOccurs="0" name="value" type="xs:string"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="roleCoverage">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element minOccurs="0" name="key" type="xs:int"/>
+                                            <xs:element minOccurs="0" name="value" type="xs:double"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveMicroComposition">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg2" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveMicroCompositionResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:userRoles"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getTwitterUserRole">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="tns:behaviourFeatures"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="behaviourFeatures">
+                <xs:sequence>
+                    <xs:element name="contentComplexity" type="xs:double"/>
+                    <xs:element name="contentInformativeness" type="xs:double"/>
+                    <xs:element name="contentLength" type="xs:int"/>
+                    <xs:element name="contentPolarity" type="xs:double"/>
+                    <xs:element name="contentReadability" type="xs:double"/>
+                    <xs:element name="contentReferralCount" type="xs:int"/>
+                    <xs:element name="contentTimeInDay" type="xs:long"/>
+                    <xs:element name="userAge" type="xs:int"/>
+                    <xs:element name="userNumFollowers" type="xs:int"/>
+                    <xs:element name="userNumFollows" type="xs:int"/>
+                    <xs:element name="userNumLists" type="xs:int"/>
+                    <xs:element name="userNumPosts" type="xs:int"/>
+                    <xs:element name="userPostRate" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getTwitterUserRoleResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getRolePath">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg3" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getRolePathResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:getRolePathResultEntry"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveMacroComposition">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+                    <xs:element minOccurs="0" name="arg2" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="deriveMacroCompositionResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:composition"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="RobustBehaviourServiceException" type="tns:RobustBehaviourServiceException"/>
+            <xs:complexType name="RobustBehaviourServiceException">
+                <xs:sequence/>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="RobustBehaviourServiceException">
+        <wsdl:part element="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="classifyForumOnDateResponse">
+        <wsdl:part element="tns:classifyForumOnDateResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deriveTSMacroCompositionsResponse">
+        <wsdl:part element="tns:deriveTSMacroCompositionsResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getRolePathResponse">
+        <wsdl:part element="tns:getRolePathResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="classifyForumOnDate">
+        <wsdl:part element="tns:classifyForumOnDate" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getRoleProportionResponse">
+        <wsdl:part element="tns:getRoleProportionResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTSRolePath">
+        <wsdl:part element="tns:getTSRolePath" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deriveTSMacroCompositions">
+        <wsdl:part element="tns:deriveTSMacroCompositions" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="classifyForumInWindowResponse">
+        <wsdl:part element="tns:classifyForumInWindowResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTSHealthIndicators">
+        <wsdl:part element="tns:getTSHealthIndicators" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deriveTSMicroCompositionsResponse">
+        <wsdl:part element="tns:deriveTSMicroCompositionsResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deriveMacroCompositionResponse">
+        <wsdl:part element="tns:deriveMacroCompositionResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deriveMicroCompositionResponse">
+        <wsdl:part element="tns:deriveMicroCompositionResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getRolePath">
+        <wsdl:part element="tns:getRolePath" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deriveMacroComposition">
+        <wsdl:part element="tns:deriveMacroComposition" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getStreamHealthIndicatorFeatures">
+        <wsdl:part element="tns:getStreamHealthIndicatorFeatures" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTwitterUserRoleResponse">
+        <wsdl:part element="tns:getTwitterUserRoleResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getStreamHealthIndicatorFeaturesResponse">
+        <wsdl:part element="tns:getStreamHealthIndicatorFeaturesResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deriveTSMicroCompositions">
+        <wsdl:part element="tns:deriveTSMicroCompositions" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCommunityIDsResponse">
+        <wsdl:part element="tns:getCommunityIDsResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getRoleProportion">
+        <wsdl:part element="tns:getRoleProportion" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deriveMicroComposition">
+        <wsdl:part element="tns:deriveMicroComposition" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPlatformIDsResponse">
+        <wsdl:part element="tns:getPlatformIDsResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="regressFormOnDateResponse">
+        <wsdl:part element="tns:regressFormOnDateResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPlatformIDs">
+        <wsdl:part element="tns:getPlatformIDs" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUserIDs">
+        <wsdl:part element="tns:getUserIDs" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getRoleCountResponse">
+        <wsdl:part element="tns:getRoleCountResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="classifyForumInWindow">
+        <wsdl:part element="tns:classifyForumInWindow" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTwitterUserRole">
+        <wsdl:part element="tns:getTwitterUserRole" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCommunityIDs">
+        <wsdl:part element="tns:getCommunityIDs" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="regressForumInWindow">
+        <wsdl:part element="tns:regressForumInWindow" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTSHealthIndicatorsResponse">
+        <wsdl:part element="tns:getTSHealthIndicatorsResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="regressFormOnDate">
+        <wsdl:part element="tns:regressFormOnDate" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="regressForumInWindowResponse">
+        <wsdl:part element="tns:regressForumInWindowResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getHealthIndicators">
+        <wsdl:part element="tns:getHealthIndicators" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getRoleCount">
+        <wsdl:part element="tns:getRoleCount" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTSRolePathResponse">
+        <wsdl:part element="tns:getTSRolePathResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getHealthIndicatorsResponse">
+        <wsdl:part element="tns:getHealthIndicatorsResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUserIDsResponse">
+        <wsdl:part element="tns:getUserIDsResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="BehaviourAnalysisService">
+        <wsdl:operation name="getPlatformIDs">
+            <wsdl:input message="tns:getPlatformIDs" name="getPlatformIDs"></wsdl:input>
+            <wsdl:output message="tns:getPlatformIDsResponse" name="getPlatformIDsResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStreamHealthIndicatorFeatures">
+            <wsdl:input message="tns:getStreamHealthIndicatorFeatures" name="getStreamHealthIndicatorFeatures"></wsdl:input>
+            <wsdl:output message="tns:getStreamHealthIndicatorFeaturesResponse" name="getStreamHealthIndicatorFeaturesResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTSRolePath">
+            <wsdl:input message="tns:getTSRolePath" name="getTSRolePath"></wsdl:input>
+            <wsdl:output message="tns:getTSRolePathResponse" name="getTSRolePathResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getRoleProportion">
+            <wsdl:input message="tns:getRoleProportion" name="getRoleProportion"></wsdl:input>
+            <wsdl:output message="tns:getRoleProportionResponse" name="getRoleProportionResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="classifyForumInWindow">
+            <wsdl:input message="tns:classifyForumInWindow" name="classifyForumInWindow"></wsdl:input>
+            <wsdl:output message="tns:classifyForumInWindowResponse" name="classifyForumInWindowResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="regressFormOnDate">
+            <wsdl:input message="tns:regressFormOnDate" name="regressFormOnDate"></wsdl:input>
+            <wsdl:output message="tns:regressFormOnDateResponse" name="regressFormOnDateResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deriveTSMicroCompositions">
+            <wsdl:input message="tns:deriveTSMicroCompositions" name="deriveTSMicroCompositions"></wsdl:input>
+            <wsdl:output message="tns:deriveTSMicroCompositionsResponse" name="deriveTSMicroCompositionsResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getRoleCount">
+            <wsdl:input message="tns:getRoleCount" name="getRoleCount"></wsdl:input>
+            <wsdl:output message="tns:getRoleCountResponse" name="getRoleCountResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="classifyForumOnDate">
+            <wsdl:input message="tns:classifyForumOnDate" name="classifyForumOnDate"></wsdl:input>
+            <wsdl:output message="tns:classifyForumOnDateResponse" name="classifyForumOnDateResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTSHealthIndicators">
+            <wsdl:input message="tns:getTSHealthIndicators" name="getTSHealthIndicators"></wsdl:input>
+            <wsdl:output message="tns:getTSHealthIndicatorsResponse" name="getTSHealthIndicatorsResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="regressForumInWindow">
+            <wsdl:input message="tns:regressForumInWindow" name="regressForumInWindow"></wsdl:input>
+            <wsdl:output message="tns:regressForumInWindowResponse" name="regressForumInWindowResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getHealthIndicators">
+            <wsdl:input message="tns:getHealthIndicators" name="getHealthIndicators"></wsdl:input>
+            <wsdl:output message="tns:getHealthIndicatorsResponse" name="getHealthIndicatorsResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCommunityIDs">
+            <wsdl:input message="tns:getCommunityIDs" name="getCommunityIDs"></wsdl:input>
+            <wsdl:output message="tns:getCommunityIDsResponse" name="getCommunityIDsResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getUserIDs">
+            <wsdl:input message="tns:getUserIDs" name="getUserIDs"></wsdl:input>
+            <wsdl:output message="tns:getUserIDsResponse" name="getUserIDsResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deriveTSMacroCompositions">
+            <wsdl:input message="tns:deriveTSMacroCompositions" name="deriveTSMacroCompositions"></wsdl:input>
+            <wsdl:output message="tns:deriveTSMacroCompositionsResponse" name="deriveTSMacroCompositionsResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deriveMicroComposition">
+            <wsdl:input message="tns:deriveMicroComposition" name="deriveMicroComposition"></wsdl:input>
+            <wsdl:output message="tns:deriveMicroCompositionResponse" name="deriveMicroCompositionResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTwitterUserRole">
+            <wsdl:input message="tns:getTwitterUserRole" name="getTwitterUserRole"></wsdl:input>
+            <wsdl:output message="tns:getTwitterUserRoleResponse" name="getTwitterUserRoleResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getRolePath">
+            <wsdl:input message="tns:getRolePath" name="getRolePath"></wsdl:input>
+            <wsdl:output message="tns:getRolePathResponse" name="getRolePathResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deriveMacroComposition">
+            <wsdl:input message="tns:deriveMacroComposition" name="deriveMacroComposition"></wsdl:input>
+            <wsdl:output message="tns:deriveMacroCompositionResponse" name="deriveMacroCompositionResponse"></wsdl:output>
+            <wsdl:fault message="tns:RobustBehaviourServiceException" name="RobustBehaviourServiceException"></wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BehaviourAnalysisServiceImplServiceSoapBinding" type="tns:BehaviourAnalysisService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getPlatformIDs">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getPlatformIDs">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getPlatformIDsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStreamHealthIndicatorFeatures">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getStreamHealthIndicatorFeatures">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getStreamHealthIndicatorFeaturesResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTSRolePath">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getTSRolePath">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getTSRolePathResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getRoleProportion">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getRoleProportion">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getRoleProportionResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="classifyForumInWindow">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="classifyForumInWindow">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="classifyForumInWindowResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deriveTSMicroCompositions">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="deriveTSMicroCompositions">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deriveTSMicroCompositionsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="regressFormOnDate">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="regressFormOnDate">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="regressFormOnDateResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getRoleCount">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getRoleCount">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getRoleCountResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="classifyForumOnDate">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="classifyForumOnDate">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="classifyForumOnDateResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTSHealthIndicators">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getTSHealthIndicators">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getTSHealthIndicatorsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getHealthIndicators">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getHealthIndicators">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getHealthIndicatorsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="regressForumInWindow">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="regressForumInWindow">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="regressForumInWindowResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCommunityIDs">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getCommunityIDs">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getCommunityIDsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deriveTSMacroCompositions">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="deriveTSMacroCompositions">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deriveTSMacroCompositionsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getUserIDs">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getUserIDs">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getUserIDsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deriveMicroComposition">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="deriveMicroComposition">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deriveMicroCompositionResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTwitterUserRole">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getTwitterUserRole">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getTwitterUserRoleResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getRolePath">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getRolePath">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getRolePathResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deriveMacroComposition">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="deriveMacroComposition">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deriveMacroCompositionResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="RobustBehaviourServiceException">
+                <soap:fault name="RobustBehaviourServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="BehaviourAnalysisServiceImplService">
+        <wsdl:port binding="tns:BehaviourAnalysisServiceImplServiceSoapBinding" name="BehaviourAnalysisServiceImplPort">
+            <soap:address location="http://robust-demo.softwaremind.pl/robust-behaviour-analysis-service-ws-1.0-SNAPSHOT/robustBehaviourAnalysisService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

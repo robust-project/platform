@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pl.swmind.robust.public</groupId>
+    <artifactId>wp6-parent-pom</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>ROBUST WP6 Modules parent pom</name>
+    <url>http://robust.eu/</url>
+
+    <parent>
+        <groupId>pl.swmind.robust</groupId>
+        <artifactId>robust-parent-pom</artifactId>
+        <version>1.1</version>
+    </parent>
+
+
+    <scm>
+	<connection>scm:svn:https://robust.softwaremind.pl/svn/public/trunk/WP6</connection>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/public/trunk/WP6</developerConnection>
+        <url>https://robust.softwaremind.pl/svn/public/trunk/WP6</url>
+    </scm>
+
+    <properties>
+        <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+        <maven-resources-plugin.version>2.4.3</maven-resources-plugin.version>
+    </properties>
+
+    <modules>
+        <module>robust-activemq-connector</module>
+        <module>robust-commons</module>
+	<module>robust-dataservice-boardsie-ws</module>
+	<module>robust-parent-pom</module>
+	<module>robust-sioc-jpa</module>
+	<module>robust-sioc-jpa-boardsie</module>
+    </modules>    
+</project>

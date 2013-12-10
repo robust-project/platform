@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+  <artifactId>robust-cat-core-dataProviders-dataSource-wsClient</artifactId>
+  <packaging>jar</packaging>
+  
+  <description>WS client for SWMIND data source service</description>
+  <url>http://www.robust-project.eu</url>
+  
+  <parent>
+    <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+    <artifactId>robust-cat-core-dataProviders-dataSource</artifactId>
+    <version>1.6</version>
+  </parent>
+  
+  <licenses>
+    <license>
+      <name>LGPL</name>
+      <url>http://www.gnu.org/licenses/lgpl.html</url>
+    </license>
+  </licenses>
+ 
+ 
+  <build>
+    <plugins>
+        
+        <!--Maven compiler 
+    <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+		
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+		
+      </plugin>-->
+	  
+        
+     
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      
+      
+      
+         <!-- generating classes from wsdl
+            
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.ver}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${basedir}/src/</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>http://robust-demo.softwaremind.pl/robust-dataservice-boardsie-ws-1.0-SNAPSHOT/robustDataServiceBoardsIE?wsdl</wsdl>
+                                    <packagenames> 
+                                            <packagename>uk.ac.soton.itinnovation.robust.cat.datasource.wsclient.gen</packagename> 
+                                    </packagenames> 
+                                    <extraargs>
+                                        <extraarg>-client</extraarg>
+                                        <extraarg>-verbose</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> -->
+            
+          
+            <!--plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/src/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin-->  
+            
+        </plugins>
+  
+        <directory>lib</directory>
+        <sourceDirectory>src</sourceDirectory>
+	
+	
+	  
+    </build>
+  
+    <dependencies>
+		<dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-models-riskModel</artifactId>
+            <version>${cat.version}</version>
+        </dependency>
+
+        <!-- Apache CXF dependencies -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.ver}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+            <scope>compile</scope>
+        </dependency>
+ 
+    </dependencies>
+  
+</project>

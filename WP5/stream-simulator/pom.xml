@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>deri.uimr</groupId>
+    <artifactId>uimr-parent</artifactId>
+    <version>2.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>deri.uimr.streamsim</groupId>
+  <artifactId>stream-simulator-parent</artifactId>
+  <version>5.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>UIMR Stream Simulator Parent</name>
+  <description>The UIMR Stream Simulator simulates the behaviour of event streams read from source plugins and deliver the results using delivery plugins.</description>
+
+  <developers>
+    <developer>
+      <id>hughro</id>
+      <name>Hugo Hromic</name>
+      <email>hugo.hromic@deri.org</email>
+      <organization>UIMR, DERI</organization>
+    </developer>
+  </developers>
+
+  <modules>
+    <module>api</module>
+    <module>core</module>
+    <module>source-csvfile</module>
+    <module>source-ibmc</module>
+    <module>delivery-csvstdout</module>
+    <module>delivery-activemq</module>
+    <!-- <module>delivery-zeromq</module> -->
+    <module>packaging</module>
+  </modules>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <configuration>
+            <links>
+              <link>http://uimr.deri.ie/~hughro/docs/stream-simulator-api/</link>
+              <link>http://uimr.deri.ie/~hughro/docs/stream-simulator-core/</link>
+              <link>http://uimr.deri.ie/~hughro/docs/stream-simulator-source-csvfile/</link>
+              <link>http://uimr.deri.ie/~hughro/docs/stream-simulator-source-ibmc/</link>
+              <link>http://uimr.deri.ie/~hughro/docs/stream-simulator-delivery-csvstdout/</link>
+              <link>http://uimr.deri.ie/~hughro/docs/stream-simulator-delivery-activemq/</link>
+              <link>http://uimr.deri.ie/~hughro/docs/stream-simulator-delivery-zeromq/</link>
+            </links>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>deri.uimr</groupId>
+      <artifactId>uimr-utilities</artifactId>
+      <version>${version.uimr}</version>
+    </dependency>
+  </dependencies>
+</project>

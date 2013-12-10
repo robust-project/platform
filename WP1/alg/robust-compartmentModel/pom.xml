@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+  <!--
+      ///
+      // © University of Southampton
+      // CORMSIS
+      // Centre of Operational Research, Management Science and Information Systems
+      // 2012
+      //
+      // Copyright in this software belongs to University of Southampton
+      // CORMSIS,
+      // University of Soutampton,
+      // Highfield Campus,
+      // Southampton,
+      // SO17 1BJ,
+      // UK
+      //
+      // This software may not be used, sold, licensed, transferred, copied
+      // or reproduced in whole or in part in any manner or form or in or
+      // on any media by any person other than in accordance with the terms
+      // of the Licence Agreement supplied with the software, or otherwise
+      // without the prior written consent of the copyright owners.
+      //
+      // This software is distributed WITHOUT ANY WARRANTY, without even the
+      // implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+      // PURPOSE, except where stated in the Licence Agreement supplied with
+      // the software.
+      //
+      //      Created By :            Edwin Tye
+      //      Created Date :          2013-04-30
+      //      Created for Project :   ROBUST
+      //
+  -->
+
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>uk.ac.soton.cormsis.robust</groupId>
+  <artifactId>robust-cm</artifactId>
+  <name>robust-cm</name>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+  <description>ROBUST Compartment Model</description>
+  
+  <parent>
+    <artifactId>robust-parent-pom</artifactId>
+    <groupId>pl.swmind.robust</groupId>
+    <version>1.1</version>
+  </parent>
+
+    <scm>
+       <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP1/M30/alg/robust-compartmentModel</developerConnection>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP1/M30/alg/robust-compartmentModel</connection>
+        <url>https://robust.softwaremind.pl/svn/WP1/M30/alg/robust-compartmentModel</url>
+    </scm>
+  
+  <distributionManagement>
+    <repository>
+      <id>ROBUST</id>
+      <name>Robust Repository</name>
+      <url>
+	http://robust.softwaremind.pl/mvn/content/repositories/releases
+      </url>
+    </repository>
+  </distributionManagement>
+  
+  <dependencies>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <!-- <version>1.2.16</version> -->
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <!-- <version>3.8.1</version> -->
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>uk.ac.soton.cormsis.robust</groupId>
+      <artifactId>robust-stats</artifactId>
+      <version>1.1</version>
+    </dependency>
+  </dependencies>
+
+</project>

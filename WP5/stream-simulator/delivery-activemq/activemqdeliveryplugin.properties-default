@@ -1,0 +1,5 @@
+# ActiveMQ Broker URL to use (default: tcp://localhost:61616)
+#broker_url = tcp://someHost.someDomain:1234
+
+# ActiveMQ Topic Name to use (default: StreamSimulator)
+#topic_name = StreamSimulator.twitterStream

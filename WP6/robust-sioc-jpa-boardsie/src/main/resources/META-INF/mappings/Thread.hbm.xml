@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="pl.swmind.robust.sioc.model"
+                   default-lazy="true">
+    <class
+        name="Thread"
+        table="threads"
+        batch-size="10">
+
+        <id
+            name="uriFromBigInt"
+            type="java.lang.Long"
+            column="threadid"
+            />
+        <property
+            name="title"
+            type="string"
+            column="title"
+            />
+        <property
+            name="created"
+            type="java.util.Date"
+            column="createddate"
+            />
+        <property
+            name="noOfViewsFromInt"
+            type="int"
+            column="views"
+            />
+        <many-to-one name="hasParent" class="Forum" fetch="select">
+            <column name="forumid" not-null="true" />
+        </many-to-one>
+
+        <many-to-one name="hasCreator" class="UserAccount" fetch="select">
+            <column name="userid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

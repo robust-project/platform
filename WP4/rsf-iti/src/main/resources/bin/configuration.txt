@@ -1,0 +1,10 @@
+/* operation mode: 0 - normal, 1 - batch, 2 - replay */
+{
+  "operationMode": 1,
+  "showGUI": false,
+  "heapSize": 1024,
+  "batchFolderLocation": "batch",
+  "resultsFolderLocation": "results",
+  "modelClassToInstantiate": "uk.ac.soton.itinnovation.robust.catsim.ModelInterface",
+  "modelConfigurationClassToInstantiate": "uk.ac.soton.itinnovation.robust.catsim.config.ModelConfiguration"
+}

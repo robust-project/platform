@@ -1,0 +1,54 @@
+
+<assembly>
+	<id>Windows</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<fileSets>
+		<fileSet>
+			<directory>target</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>lib/log4j-*.jar</include>	
+				<include>lib/gson-*.jar</include>
+				<include>lib/RoSim-Core-*.jar</include>
+				<include>lib/simplatform-*.jar</include>
+			</includes>
+		</fileSet>
+
+		<!--
+		<fileSet>
+			<includes>
+				<include>README</include>
+				<include>license-LGPL.txt</include>
+			</includes>
+		</fileSet>
+		-->
+		
+		<fileSet>
+			<directory>target</directory>
+			<outputDirectory>lib</outputDirectory>
+			<includes>
+				<include>*RoSim*.jar</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<directory>target/classes/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+			<excludes>
+				<exclude>runModel.sh</exclude>
+				<exclude>runModelOnMac.sh</exclude>
+			</excludes>
+		</fileSet>
+
+		<fileSet>
+			<directory>target/classes/bin</directory>
+			<outputDirectory></outputDirectory>
+			<includes>
+				<include>log4j.properties</include>
+			</includes>
+		</fileSet>
+
+	</fileSets>
+</assembly>

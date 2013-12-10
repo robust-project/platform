@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <!--
+/////////////////////////////////////////////////////////////////////////
+//
+// © University of Southampton IT Innovation Centre, 2012
+//
+// Copyright in this software belongs to University of Southampton
+// IT Innovation Centre of Gamma House, Enterprise Road, 
+// Chilworth Science Park, Southampton, SO16 7NS, UK.
+//
+// This software may not be used, sold, licensed, transferred, copied
+// or reproduced in whole or in part in any manner or form or in or
+// on any media by any person other than in accordance with the terms
+// of the Licence Agreement supplied with the software, or otherwise
+// without the prior written consent of the copyright owners.
+//
+// This software is distributed WITHOUT ANY WARRANTY, without even the
+// implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+// PURPOSE, except where stated in the Licence Agreement supplied with
+// the software.
+//
+//      Created By :            Simon Crowle
+//      Created Date :          2012-06-21
+//      Created for Project :   ROBUST
+//
+/////////////////////////////////////////////////////////////////////////
+-->
+    <display-name>CAT Demo</display-name>
+    <context-param>
+        <description>Vaadin production mode</description>
+        <param-name>productionMode</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <!-- H2 TCP connection to H2 database access provider __________________ -->
+    <context-param>
+        <param-name>db.url</param-name>
+        <param-value>jdbc:h2:mem:activti;DB_CLOSE_DELAY=1000</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.user</param-name>
+        <param-value>sa</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.password</param-name>
+        <param-value/>
+    </context-param>
+    <context-param>
+        <param-name>db.tcpServer</param-name>
+        <param-value>-tcp -tcpAllowOthers</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.h2.server.web.DbStarter</listener-class>
+    </listener>
+    <!-- ___________________________________________________________________ -->
+    <!-- CAT servlet context listener -->
+    <listener>
+        <listener-class>uk.ac.soton.itinnovation.robust.cat.webapp.CATServletContextListener</listener-class>
+    </listener>
+    <!-- CAT servlet -->
+    <servlet>
+        <servlet-name>CAT Application Servlet</servlet-name>
+        <servlet-class>com.vaadin.terminal.gwt.server.ApplicationServlet</servlet-class>
+        <!-- Application entry point -->
+        <init-param>
+            <description>Vaadin application class to start</description>
+            <param-name>application</param-name>
+            <param-value>uk.ac.soton.itinnovation.robust.cat.webapp.EntryPoint</param-value>
+        </init-param>
+        <!-- 3rd party plug-in dependencys -->
+        <init-param>
+            <description>CAT Visualisation Widgetsetst</description>
+            <param-name>widgetset</param-name>
+            <param-value>VAADIN.widgetsets.catExternalWidgetset</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CAT Application Servlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+</web-app>

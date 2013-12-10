@@ -1,0 +1,9 @@
+<?php
+
+class DBCONFIG {
+    public static $host = '***CHANGE ME***';
+    public static $user = '***CHANGE ME***';
+    public static $password = '***CHANGE ME***';
+    public static $dbname = 'features_cache';
+    public static $encoding = 'utf8';
+}

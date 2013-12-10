@@ -1,0 +1,177 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pl.swmind.robust</groupId>
+    <artifactId>robust-dataservice-boardsie-ws</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>Robust DataService WS :: Boards.ie</name>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1</version>
+    </parent>
+
+    <properties>
+        <hsql.ver>2.2.9</hsql.ver>
+    </properties>
+
+    <!--  Information for CI - where to deploy release version -->
+    <distributionManagement>
+        <repository>
+            <id>Robust</id>
+            <name>Robust Repository</name>
+            <url>
+                http://robust.softwaremind.pl/mvn/content/repositories/releases
+            </url>
+        </repository>
+    </distributionManagement>
+
+    <scm>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-dataservice-boardsie-ws/trunk/</connection>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-dataservice-boardsie-ws/trunk/</developerConnection>
+        <url>https://robust.softwaremind.pl/svn/WP6/robust-dataservice-boardsie-ws/trunk/</url>
+    </scm>
+    <build>
+        <finalName>${artifactId}-${version}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <version>${cxf.ver}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-simple</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <className>pl.swmind.robust.ws.RobustDataServiceBoardsIEWS</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Dependency definitions -->
+    <dependencies>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsql.ver}</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.swmind.robust</groupId>
+            <artifactId>robust-sioc-jpa-boardsie</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+        <!-- Apache CXF dependencies -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+
+        <!-- Spring Dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.14.6</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.2.145</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>pl.swmind.robust</groupId>
+            <artifactId>robust-sioc-jpa</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kubek2k</groupId>
+            <artifactId>springockito</artifactId>
+            <version>1.0.5</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>pl.swmind.robust</groupId>
+            <artifactId>robust-commons</artifactId>
+            <version>1.4-SNAPSHOT</version>
+            <!--<exclusions>-->
+            <!--<exclusion>-->
+            <!--<artifactId>slf4j-log4j12</artifactId>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--</exclusion>-->
+            <!--</exclusions>-->
+        </dependency>
+    </dependencies>
+</project>
+

@@ -1,0 +1,146 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>deri.uimr</groupId>
+    <artifactId>uimr-parent</artifactId>
+    <version>2.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>user-features-stream-feeder</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>UIMR User Features Stream Feeder</name>
+  <description>This software connects to an ActiveMQ Broker and subscribes to a given Topic to receive streaming events to be dumped into a user features framework database.</description>
+
+  <developers>
+    <developer>
+      <id>hughro</id>
+      <name>Hugo Hromic</name>
+      <email>hugo.hromic@deri.org</email>
+      <organization>UIMR, DERI</organization>
+    </developer>
+  </developers>
+
+  <properties>
+    <mainClass>deri.uimr.ufstreamfeeder.StreamFeeder</mainClass>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <configuration>
+          <createDependencyReducedPom>false</createDependencyReducedPom>
+          <transformers>
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+              <mainClass>${mainClass}</mainClass>
+            </transformer>
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+          </transformers>
+          <filters>
+            <filter>
+              <artifact>*:*</artifact>
+              <excludes>
+                <exclude>META-INF/*.SF</exclude>
+                <exclude>META-INF/*.DSA</exclude>
+                <exclude>META-INF/*.RSA</exclude>
+              </excludes>
+            </filter>
+          </filters>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>deri.uimr</groupId>
+      <artifactId>uimr-utilities</artifactId>
+      <version>${version.uimr}</version>
+    </dependency>
+    <dependency>
+      <groupId>deri.uimr</groupId>
+      <artifactId>uimr-utilities-mysql</artifactId>
+      <version>${version.uimr}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-core</artifactId>
+      <version>${version.activemq}</version>
+      <!-- Exclude the non-client JAR files -->
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.activemq</groupId>
+          <artifactId>activeio-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.activemq</groupId>
+          <artifactId>kahadb</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jasypt</groupId>
+          <artifactId>jasypt</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.activemq.protobuf</groupId>
+          <artifactId>activemq-protobuf</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>commons-net</groupId>
+          <artifactId>commons-net</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.osgi</groupId>
+          <artifactId>org.osgi.core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.fusesource.mqtt-client</groupId>
+          <artifactId>mqtt-client</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.fusesource.fuse-extra</groupId>
+          <artifactId>fusemq-leveldb</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${version.slf4j}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>${version.jetty}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlet</artifactId>
+      <version>${version.jetty}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>${version.jackson}</version>
+    </dependency>
+  </dependencies>
+</project>

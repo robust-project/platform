@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<predictors>
+  <predictor>
+    <predurl>http://localhost:8080/predictorServiceCM-1.3/service</predurl>
+    <predns>http://cm.ps.robust.cormsis.soton.ac.uk/</predns>
+    <predsvcname>PredictorServiceImplService</predsvcname>
+    <predportname>PredictorServiceImplPort</predportname>
+  </predictor>
+  <predictor>
+    <predurl>http://robust-demo.softwaremind.pl/userActivityPredictorService-1.2/service</predurl>
+    <predns>http://impl.ps.robust.itinnovation.soton.ac.uk/</predns>
+    <predsvcname>PredictorServiceImplService</predsvcname>
+    <predportname>PredictorServiceImplPort</predportname>
+  </predictor>
+</predictors>

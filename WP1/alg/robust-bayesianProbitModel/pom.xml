@@ -1,0 +1,64 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>uk.ac.soton.cormsis.robust</groupId>
+    <artifactId>robust-bayesianProbitModel</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    
+    <!-- Information for CI - where to deploy release version -->
+    <distributionManagement>
+        <repository>
+            <id>Robust</id>
+            <name>Robust Repository</name>
+            <url>
+                http://robust.softwaremind.pl/mvn/content/repositories/releases
+            </url>
+        </repository>
+    </distributionManagement>
+
+    <!--  Information for CI - where to tag and commit the updated code -->
+    <!--  please update location of your project (WP number) -->
+    <scm>
+        <!--TODO fill with svn adress-->
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP1/M30/alg/robust-bayesianProbitModel</connection>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP1/M30/alg/robust-bayesianProbitModel</developerConnection>
+        <url>https://robust.softwaremind.pl/svn/WP1/M30/alg/robust-bayesianProbitModel</url>
+    </scm>
+    
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1</version>
+    </parent>
+    
+    <dependencies>
+	<dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <!-- <version>1.2.16</version> -->
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+             <version>3.8.1</version> 
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.soton.cormsis.robust</groupId>
+            <artifactId>robust-stats</artifactId>
+            <version>1.1</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+    <name>robust-bayesianProbitModel</name>
+</project>

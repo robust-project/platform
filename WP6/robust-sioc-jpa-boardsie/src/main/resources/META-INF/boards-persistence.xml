@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence
+        xmlns="http://java.sun.com/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+        version="1.0">
+
+    <persistence-unit name="BoardsPU" transaction-type="RESOURCE_LOCAL">
+        <properties>
+            <property name="hibernate.archive.autodetection" value="hbm"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+        <class>pl.swmind.robust.sioc.model.UserAccount</class>
+        <class>pl.swmind.robust.sioc.model.Forum</class>
+        <class>pl.swmind.robust.sioc.model.Post</class>
+        <class>pl.swmind.robust.sioc.model.Thread</class>
+    </persistence-unit>
+</persistence>

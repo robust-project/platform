@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:s="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="http://robust.softwaremind.pl/HealthIndicatorService"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+  targetNamespace="http://robust.softwaremind.pl/HealthIndicatorService">
+
+  <types>
+    <s:schema elementFormDefault="qualified"
+      targetNamespace="http://robust.softwaremind.pl/HealthIndicatorService">
+
+      <!-- Service Methods -->
+
+      <!-- getDataSources() -->
+      <s:element name="getDataSourcesRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accessKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDataSourcesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="datasources" type="tns:ListOfDataSources" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+
+      <!-- getCommunities() -->
+      <s:element name="getCommunitiesRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accessKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataSourceId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCommunitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="communities" type="tns:ListOfCommunities" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+
+      <!-- getIndicators() -->
+      <s:element name="getIndicatorsRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accessKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataSourceId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="communityId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIndicatorsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="indicators" type="tns:ListOfIndicators" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+
+      <!-- getHealthScore() -->
+      <s:element name="getHealthScoreRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accessKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataSourceId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="communityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="indicatorId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHealthScoreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="score" type="tns:score" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+
+      <!-- getHealthScores() -->
+      <s:element name="getHealthScoresRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accessKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataSourceId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="communityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHealthScoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="scores" type="tns:ListOfScores" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+
+      <!-- Service Data Types -->
+
+      <!-- DataSource -->
+      <s:complexType name="datasource">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="title" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+
+      <!-- Community -->
+      <s:complexType name="community">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+
+      <!-- Indicator -->
+      <s:complexType name="indicator">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="title" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+
+      <!-- Score -->
+      <s:complexType name="score">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="indicator" type="tns:indicator" />
+          <s:element minOccurs="1" maxOccurs="1" name="value" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+
+      <!-- List of DataSources -->
+      <s:complexType name="ListOfDataSources">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="datasource" type="tns:datasource" />
+        </s:sequence>
+      </s:complexType>
+
+      <!-- List of Communities -->
+      <s:complexType name="ListOfCommunities">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="community" type="tns:community" />
+        </s:sequence>
+      </s:complexType>
+
+      <!-- List of Indicators -->
+      <s:complexType name="ListOfIndicators">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="indicator" type="tns:indicator" />
+        </s:sequence>
+      </s:complexType>
+
+      <!-- List of Scores -->
+      <s:complexType name="ListOfScores">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="score" type="tns:score" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+
+  <!-- Service Messages -->
+  <message name="getDataSourcesRequest">
+    <part name="body" element="tns:getDataSourcesRequest" />
+  </message>
+  <message name="getDataSourcesResponse">
+    <part name="body" element="tns:getDataSourcesResponse" />
+  </message>
+  <message name="getCommunitiesRequest">
+    <part name="body" element="tns:getCommunitiesRequest" />
+  </message>
+  <message name="getCommunitiesResponse">
+    <part name="body" element="tns:getCommunitiesResponse" />
+  </message>
+  <message name="getIndicatorsRequest">
+    <part name="body" element="tns:getIndicatorsRequest" />
+  </message>
+  <message name="getIndicatorsResponse">
+    <part name="body" element="tns:getIndicatorsResponse" />
+  </message>
+  <message name="getHealthScoreRequest">
+    <part name="body" element="tns:getHealthScoreRequest" />
+  </message>
+  <message name="getHealthScoreResponse">
+    <part name="body" element="tns:getHealthScoreResponse" />
+  </message>
+  <message name="getHealthScoresRequest">
+    <part name="body" element="tns:getHealthScoresRequest" />
+  </message>
+  <message name="getHealthScoresResponse">
+    <part name="body" element="tns:getHealthScoresResponse" />
+  </message>
+
+  <!-- Service SOAP port -->
+  <portType name="RobustCommunityAnalysisSoap">
+    <operation name="getDataSources">
+      <input message="tns:getDataSourcesRequest" />
+      <output message="tns:getDataSourcesResponse" />
+    </operation>
+    <operation name="getCommunities">
+      <input message="tns:getCommunitiesRequest" />
+      <output message="tns:getCommunitiesResponse" />
+    </operation>
+    <operation name="getIndicators">
+      <input message="tns:getIndicatorsRequest" />
+      <output message="tns:getIndicatorsResponse" />
+    </operation>
+    <operation name="getHealthScore">
+      <input message="tns:getHealthScoreRequest" />
+      <output message="tns:getHealthScoreResponse" />
+    </operation>
+    <operation name="getHealthScores">
+      <input message="tns:getHealthScoresRequest" />
+      <output message="tns:getHealthScoresResponse" />
+    </operation>
+  </portType>
+
+  <!-- Service Methods Binding -->
+  <binding name="RobustCommunityAnalysisSoap" type="tns:RobustCommunityAnalysisSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="getDataSources">
+      <soap:operation soapAction="" style="document" />
+      <input><soap:body use="literal" /></input>
+      <output><soap:body use="literal" /></output>
+    </operation>
+    <operation name="getCommunities">
+      <soap:operation soapAction="" style="document" />
+      <input><soap:body use="literal" /></input>
+      <output><soap:body use="literal" /></output>
+    </operation>
+    <operation name="getIndicators">
+      <soap:operation soapAction="" style="document" />
+      <input><soap:body use="literal" /></input>
+      <output><soap:body use="literal" /></output>
+    </operation>
+    <operation name="getHealthScore">
+      <soap:operation soapAction="" style="document" />
+      <input><soap:body use="literal" /></input>
+      <output><soap:body use="literal" /></output>
+    </operation>
+    <operation name="getHealthScores">
+      <soap:operation soapAction="" style="document" />
+      <input><soap:body use="literal" /></input>
+      <output><soap:body use="literal" /></output>
+    </operation>
+  </binding>
+
+  <!-- Service -->
+  <service name="RobustCommunityAnalysis">
+    <port name="RobustCommunityAnalysisSoap" binding="tns:RobustCommunityAnalysisSoap">
+      <soap:address location="http://uimr.deri.ie/services/RobustCommunityAnalysis/" />
+    </port>
+  </service>
+</definitions>

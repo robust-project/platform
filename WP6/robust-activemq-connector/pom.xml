@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.swmind.robust.streaming</groupId>
+    <artifactId>robust-activemq-connector</artifactId>
+    <version>1.3-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>robust-activemq-connector</name>
+    <url>http://robust-project-eu</url>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1</version>
+    </parent>
+
+    <description>
+         Common classes and interfaces for ROBUST projects. Contains Robust Web-Services interfaces.
+    </description>
+
+    <distributionManagement>
+        <repository>
+            <id>ROBUST</id>
+            <name>Robust Repository</name>
+            <url>
+                http://robust.softwaremind.pl/mvn/content/repositories/releases
+            </url>
+        </repository>
+    </distributionManagement>
+
+    <issueManagement>
+        <system>Redmine</system>
+        <url>https://robust.softwaremind.pl/redmine</url>
+    </issueManagement>
+    <scm>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-activemq-connector/trunk</developerConnection>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP6/robust-activemq-connector/trunk</connection>
+        <url>https://robust.softwaremind.pl/svn/WP6/robust-activemq-connector/trunk</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>rajn</id>
+            <name>Rafal Janik</name>
+            <email>rafal.janik@softwaremind.pl</email>
+            <organization>Software Mind S.A.</organization>
+            <organizationUrl>
+                http://www.softwaremind.pl
+            </organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-release-plugin</artifactId>-->
+                <!--<version>2.3.2</version>-->
+                <!--<configuration>-->
+                    <!--<tagBase>https://svn.apache.org/repos/asf/maven/components/releases</tagBase>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+    <dependencies>
+
+
+        <!-- logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.14.6</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.swmind.robust</groupId>
+            <artifactId>robust-commons</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-core</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+
+
+    </dependencies>
+
+
+</project>

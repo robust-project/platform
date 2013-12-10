@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Community User Features Browser</title>
+    <link rel="stylesheet" href="styles/blueprint/screen.css" type="text/css" media="screen, projection"/>
+    <link rel="stylesheet" href="styles/blueprint/print.css" type="text/css" media="print"/>
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="styles/blueprint/ie.css" type="text/css" media="screen, projection"/>
+    <![endif]-->
+    <link rel="stylesheet" href="styles/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
+    <link rel="Stylesheet" href="styles/jquery-ui/smoothness/theme.css" type="text/css" media="screen, projection" />
+    <link rel="Stylesheet" href="styles/jquery-ui/selectmenu.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="styles/site.css" type="text/css" media="screen, projection" />
+    <link rel="icon" href="images/favicon.png" />
+    <script type="text/javascript" src="scripts/jquery.js" />
+    <script type="text/javascript" src="scripts/jquery-ui.js" />
+    <script type="text/javascript" src="scripts/jquery-ui-selectmenu.js" />
+    <script type="text/javascript" src="scripts/jquery-ui-tabsclosable.js" />
+    <script type="text/javascript" src="scripts/highcharts.js" />
+    <script type="text/javascript" src="scripts/highcharts-exporting.js" />
+    <script type="text/javascript" src="scripts/consolidations.js" />
+    <script type="text/javascript" src="scripts/browser.js" />
+</head>
+<body>
+<div class="container">
+    <hr class="space"/>
+    <h1>Community User Features Browser</h1>
+    <h3 class="alt">Use this tool to explore and compare user features computed over many time windows.</h3>
+
+    <hr/>
+    <div id="content">
+        <div class="container"><div id="chart"/></div>
+        <hr class="space"/>
+        <div class="container"><div id="controls"/></div>
+        <hr class="space"/>
+    </div>
+    <hr/>
+
+    <h3 class="alt bottom">Contact Information</h3>
+    <hr class="space"/>
+    <div class="span-12 colborder">
+        <h6>Hugo Hromic</h6>
+        <p>Unit for Information Mining and Retrieval (UIMR)<br/>
+        Digital Enterprise Research Institute (DERI)<br/>
+        NUI Galway, Ireland</p>
+    </div>
+    <div class="span-11 last">
+        <hr class="space"/>
+        <hr class="space"/>
+        <p>hugo.hromic at deri dot org<br/>
+        <a href="http://www.deri.ie/about/team/member/hugo_hromic">http://www.deri.ie/about/team/member/hugo_hromic</a></p>
+    </div>
+    <hr/>
+
+    <div class="span-2"><a href="http://deri.ie" title="DERI"><img src="images/deri-logo.png" alt="DERI" height="31" width="60" /></a></div>
+    <div class="span-4"><a href="http://robust-project.eu" title="The ROBUST Project"><img src="images/robust-logo.png" alt="The ROBUST Project" height="31" width="109" /></a></div>
+    <div class="right"><a href="http://validator.w3.org/check?uri=referer"><img src="images/valid-xhtml11.png" alt="Valid XHTML 1.1" height="31" width="88" /></a></div>
+    <hr class="space"/>
+
+    <div id="help_msg" class="hide">
+    <p><strong>Introduction</strong></p>
+    <hr class="space bottom top"/>
+    <p>This browsing tool is designed to help you explore community user features computed over different time windows. You can build any kind of chart you like just by adding different user feature values series to it, and also applying many different parametrizable consolidation functions.</p>
+    <hr class="space bottom top"/>
+    <p><strong>The Series Panel</strong></p>
+    <hr class="space bottom top"/>
+    <p>All the action happens in the "Series Panel", initially empty. Everytime you add a new serie, a new "Serie Tab" is created in the Series Panel for you to adjust all the parameters accordingly. After you create some series, you can always select any existing Serie Tab to go back and modify the related serie parameters.</p>
+    <hr class="space bottom top"/>
+    <p>Every Serie Tab contains, in order, the following adjustable parameters:</p>
+    <ul>
+        <li><strong>Serie Name:</strong> you can put any name you want to the serie.</li>
+        <li><strong>Datasource:</strong> allows you to select any available datasource for getting the data from.</li>
+        <li><strong>Community:</strong> each datasource contains one or more communities. You can choose the one you want here.</li>
+        <li><strong>Feature:</strong> let you choose the User Feature you want to be plotted (see below).</li>
+        <li><strong>Timestep:</strong> time periods are divided into different timesteps (monthly, yearly, etc). Select the one you need here.</li>
+        <li><strong>"From" Date:</strong> the start date you want the considered data.</li>
+        <li><strong>"To" Date:</strong> the end date you want the data to be fetched.</li>
+        <li><strong>Consolidation Function:</strong> select the Consolidation function you wish to apply to the data (see below).</li>
+        <li><strong>Reference Value:</strong> if the Consolidation function allows for a reference value, input it here.</li>
+    </ul>
+    <hr class="space bottom top"/>
+    <p><strong>User Features</strong></p>
+    <hr class="space bottom top"/>
+    <p>Every community of the datasets have one or more User Features available to do Community Analysis. The following list describes the features you can find:</p>
+    <ul>
+        <li><strong>activity:</strong> Activity counts the number of messages a given user writes in the community.</li>
+        <li><strong>indegree:</strong> In-degree measures the number of incoming connections (messages) to a given user. To measure the in-degree of a user, the number of unique users that have replied to that particular user is counted.</li>
+        <li><strong>outdegree:</strong> Out-degree measures the number of outgoing connections (messages) from a given user. To measure the out-degree of a user, the number of unique users that the particular user has replied to is counted.</li>
+        <li><strong>populartiy:</strong> Popularity measures the percentage of messages written by the user that are replied to.</li>
+        <li><strong>reciprocity:</strong> Reciprocity measures the average time (in seconds) it takes for a message of the user to be replied to. It provides an indication of how important a user is.</li>
+    </ul>
+    <hr class="space bottom top"/>
+    <p><strong>Consolidation Functions</strong></p>
+    <hr class="space bottom top"/>
+    <p>For every serie, the raw data fetched can be consolidated using any given "Consolidation Function". Those functions take different parts of the raw data, process it in some fashion (tipcally for normalization) and returns the final output value. The available Consolidation Functions are as follows:</p>
+    <ul>
+        <li><strong>mean:</strong> simply returns the Mean value of the data.</li>
+        <li><strong>mean_linear:</strong> same as "mean", but allows you to linearly scale the Mean by any given refvalue.</li>
+        <li><strong>mean_tanh:</strong> same as "mean", but allows you to apply hyperbolic tangent normalization with a given refvalue.</li>
+        <li><strong>mean_arccot:</strong> same as "mean", but allows you to apply inverse cotangent normalization with a given refvalue.</li>
+        <li><strong>mean_arccot_penatly:</strong> same as "mean_arccot", but also applies a linear "penalty" according to the used/available data size ratio.</li>
+        <li><strong>median:</strong> simply returns the Median value of the data.</li>
+        <li><strong>median_linear:</strong> same as "median", but allows you to linearly scale the Median by any given refvalue.</li>
+        <li><strong>sum:</strong> simply returns the Summation of all values of the data.</li>
+        <li><strong>sum_linear:</strong> same as "sum", but allows you to linearly scale the Summation by any given refvalue.</li>
+        <li><strong>sum_tanh:</strong> same as "sum", but allows you to apply hyperbolic tangent normalization with a given refvalue.</li>
+        <li><strong>data_size:</strong> simply returns the data size fetched (number of values).</li>
+        <li><strong>data_size_linear:</strong> same as "data_size", but allows you to linearly scale the Data Size by any given refvalue.</li>
+    </ul>
+    <hr class="space bottom top"/>
+    <p><strong>Tips and Tricks</strong></p>
+    <hr class="space bottom top"/>
+    <p>Please take note of the following tips, tricks and advises before building your beautiful charts:</p>
+    <ul>
+        <li>Please allow some time for the controls to be filled automatically after creating/modifying a serie. This is because the controls are filled with live data after you choose options.</li>
+        <li>After you configure a newly created serie (or adjust an existing one), you have to click on the <strong>"Apply"</strong> button to get it plotted on the chart.</li>
+        <li>Sometimes, the Apply button takes some time to update the chart. This is <strong>normal</strong>, and it's because the browser needs to fetch the data from the server after you do modifications.</li>
+        <li>The <strong>Activity</strong> User Feature is the only one that contain data to be used with "sum" or "sum_linear" Consolidation Functions.</li>
+        <li>You can combine <strong>Activity</strong> feature with any <strong>"sum"</strong> Consolidation Function to get the total "Number of Messages" of the selected community, timestep and from/to dates.</li>
+        <li>Very similar to the above tip, you can combine <strong>Activity</strong> with any <strong>"data_size"</strong> Consolidation Function to get the total "Number of Users" of the selected community, timestep and from/to dates.</li>
+        <li>On top/right of the chart area, you can find two buttons for <strong>printing</strong> and/or <strong>exporting</strong> the chart you are currently viewing.</li>
+        <li>You can close this help window with the ESC key, you can resize or move it too. When you re-open this window, it will be displayed exactly the same as you left it the last time, including the scroll position!.</li>
+    </ul>
+    <hr class="space bottom top"/>
+    <p><strong>Reference Value Quick Guide</strong></p>
+    <hr class="space bottom top"/>
+    <p>You can use the following suggested initial Reference Values to get nice results (feel free to play with those values as desired):</p>
+    <ul>
+        <li>For "boardsie-indegree", use "mean_tanh" with: <strong>168.4</strong></li>
+        <li>For "boardsie-outdegree", use "mean_tanh" with: <strong>167.6</strong></li>
+        <li>For "boardsie-reciprocity", use "mean_arccot_penalty" with: <strong>822617.8</strong></li>
+        <li>For "tiddlywiki-indegree", use "mean_tanh" with: <strong>63.0</strong></li>
+        <li>For "tiddlywiki-outdegree", use "mean_tanh" with: <strong>68.0</strong></li>
+        <li>For "tiddlywiki-reciprocity", use "mean_arccot_penalty" with: <strong>89238.6</strong></li>
+    </ul>
+    </div>
+</div>
+</body>
+</html>

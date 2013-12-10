@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>robust-cat-core-probEstimator</artifactId>
+     <packaging>jar</packaging>
+    <description>Commons package for probability estimation in WP1 of the ROBUST project</description>
+  
+    <parent>
+        <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+        <artifactId>robust-cat-core</artifactId>
+        <version>1.6</version>
+    </parent>
+  
+    <build>
+        <plugins>
+      
+              <!-- Maven compiler -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+        </plugins>
+         <directory>target</directory>
+    <sourceDirectory>src</sourceDirectory>
+    </build>
+    
+    <profiles>
+        
+        <!-- Profile for executing unit tests: mvn test -Ptest -->
+        <profile>
+            <id>test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.4.2</version>
+                        <configuration>
+                            <skipTests>false</skipTests>
+                            <includes>
+                                <include>**/CommonTestSuite.class</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    
+    <dependencies>
+    
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${cat.log4j.version}</version>
+        </dependency>
+    
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${cat.junit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-common</artifactId>
+            <version>1.6</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,201 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!--
+        ///
+        // © University of Southampton
+        // CORMSIS
+        // Centre of Operational Research, Management Science and Information Systems
+        // 2012
+        //
+        // Copyright in this software belongs to University of Southampton
+        // CORMSIS,
+        // University of Soutampton,
+        // Highfield Campus,
+        // Southampton,
+        // SO17 1BJ,
+        // UK
+        //
+        // This software may not be used, sold, licensed, transferred, copied
+        // or reproduced in whole or in part in any manner or form or in or
+        // on any media by any person other than in accordance with the terms
+        // of the Licence Agreement supplied with the software, or otherwise
+        // without the prior written consent of the copyright owners.
+        //
+        // This software is distributed WITHOUT ANY WARRANTY, without even the
+        // implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+        // PURPOSE, except where stated in the Licence Agreement supplied with
+        // the software.
+        //
+        //      Created By :            Edwin Tye
+        //      Created Date :          2013-04-30
+        //      Created for Project :   ROBUST
+        //
+    -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>uk.ac.soton.cormsis.robust.predictorservice.cm</groupId>
+    <artifactId>userRolePredictorService</artifactId>
+    <packaging>war</packaging>
+    <version>1.3</version>
+    <name>ROBUST User Role Predictor Service</name>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1</version>
+    </parent>
+    
+    <!-- 3rd party repositories -->
+    <repositories>
+
+        <repository>
+            <id>Robust</id>
+            <url>http://robust.softwaremind.pl/mvn/content/groups/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+  
+    </repositories>
+
+    <scm>
+        <developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WP1/M30/ps/robust-predictorService-cm</developerConnection>
+        <connection>scm:svn:https://robust.softwaremind.pl/svn/WP1/M30/ps/robust-predictorService-cm</connection>
+        <url>https://robust.softwaremind.pl/svn/WP1/M30/ps/robust-predictorService-cm</url>
+    </scm>
+
+
+    <!-- Information for CI - where to deploy release version -->
+    <distributionManagement>
+        <repository>
+            <id>Robust</id>
+            <name>Robust Repository</name>
+            <url>
+                http://robust.softwaremind.pl/mvn/content/repositories/releases
+            </url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <finalName>userRolePredictorService-1.3</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <!-- -->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <version>${cxf.ver}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-simple</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <className>uk.ac.soton.itinnovation.robust.cat.common.ps.IPredictorService</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- -->
+        </plugins>
+    </build>
+
+    <!-- Dependency definitions -->
+    <dependencies>
+        <!-- CORMSIS dependencies -->
+        <dependency>
+            <groupId>uk.ac.soton.cormsis.robust</groupId>
+            <artifactId>robust-cmrc</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.soton.cormsis.robust</groupId>
+            <artifactId>robust-cm</artifactId>
+            <version>1.0</version>
+        </dependency>
+		
+        <!-- database connection for testing -->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.0-801.jdbc3</version>
+            <scope>compile</scope>
+        </dependency>
+		
+        <!-- CAT dependencies -->
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-common</artifactId>
+            <version>1.5</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>uk.ac.soton.itinnovation.robust.cat</groupId>
+            <artifactId>robust-cat-core-components-evaluationEngine-wsClient</artifactId>
+            <version>1.5</version>
+        </dependency>
+        
+        <!-- Apache CXF dependencies -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+
+        <!-- Spring Dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- Logging -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        
+    </dependencies>
+    <properties></properties>
+</project>
+

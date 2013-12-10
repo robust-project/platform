@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>eu.robust.simulation.ui</groupId>
+	<artifactId>rsf-ui</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>rsf-ui</name>
+
+	<parent> 
+		<groupId>pl.swmind.robust</groupId>
+		<artifactId>robust-parent-pom</artifactId>
+		<version>1.1</version>
+	</parent>
+
+	<!--  please put the description here -->
+	<description>Description.</description>
+
+	<!--  please put information about the developers here -->
+	<developers>
+		<!-- an example of how to fill this section -->
+		<!-- 
+			<developer>
+			<id>john</id>
+			<name>John Brown</name>
+			<email>john.brown@whatever.com</email>
+			<organization>Some Bogus Company</organization>
+			<organizationUrl>
+			http://www.someboguscompay.com
+			</organizationUrl>
+			<roles>
+			<role>developer</role>
+			</roles>
+			</developer>
+			<developer>
+			add as many developers here as you wish
+			</developer>
+		-->
+	</developers>
+	
+	
+	<!--  Information for CI - where to deploy release version -->
+	<distributionManagement>
+		<repository>
+			<id>Robust</id>
+			<name>Robust Repository</name>
+			<url>
+				http://robust.softwaremind.pl/mvn/content/repositories/releases
+			</url>
+		</repository>
+	</distributionManagement>
+	
+    <!--  Information for CI - where to tag and commit the updated code -->
+    <!--  please update location of your project (WP number) -->
+	<scm>
+		<connection>scm:svn:https://robust.softwaremind.pl/svn/WPx/rsf-ui</connection>
+		<developerConnection>scm:svn:https://robust.softwaremind.pl/svn/WPx/rsf-ui</developerConnection>
+		<url>https://robust.softwaremind.pl/svn/WPx/rsf-ui</url>
+	</scm>
+	
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+
+		</plugins>
+	</build>
+
+	<properties>
+        <!-- put properties to the libraries used by your code here-->
+	</properties>
+
+	<dependencies>
+		<!-- put dependencies to the libraries used by your code here-->
+        <!-- check first has the dependency been already added to parent-pom, if yes do not specify version in dependency -->
+		<dependency>
+			<groupId>org.jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.14</version>
+		</dependency>  
+		<dependency>
+			<groupId>com.toedter</groupId>
+			<artifactId>jcalendar</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.robust.simulation</groupId>
+			<artifactId>rsf-core</artifactId>
+			<version>0.6.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.robust.simulation</groupId>
+			<artifactId>rsf-ukob-soap-interfaces</artifactId>
+			<version>0.3.0</version>
+		</dependency>
+	</dependencies>
+
+</project>
+

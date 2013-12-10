@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>deri.uimr.streamsim</groupId>
+    <artifactId>stream-simulator-parent</artifactId>
+    <version>5.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>delivery-activemq</artifactId>
+  <packaging>jar</packaging>
+
+  <name>UIMR Stream Simulator ActiveMQ Delivery Plugin</name>
+  <description>The UIMR Stream Simulator simulates the behaviour of event streams read from source plugins and deliver the results using delivery plugins. This artifact provides a delivery plugin to deliver events using an ActiveMQ Topic.</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <links>
+            <link>http://uimr.deri.ie/~hughro/docs/stream-simulator-delivery-activemq/</link>
+          </links>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>deri.uimr.streamsim</groupId>
+      <artifactId>stream-simulator-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-core</artifactId>
+      <version>${version.activemq}</version>
+      <!-- Exclude the non-client JAR files -->
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.activemq</groupId>
+          <artifactId>activeio-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.activemq</groupId>
+          <artifactId>kahadb</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jasypt</groupId>
+          <artifactId>jasypt</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.activemq.protobuf</groupId>
+          <artifactId>activemq-protobuf</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>commons-net</groupId>
+          <artifactId>commons-net</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.osgi</groupId>
+          <artifactId>org.osgi.core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.fusesource.mqtt-client</groupId>
+          <artifactId>mqtt-client</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.fusesource.fuse-extra</groupId>
+          <artifactId>fusemq-leveldb</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+</project>

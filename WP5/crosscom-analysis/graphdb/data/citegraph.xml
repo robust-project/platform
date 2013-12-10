@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2010-2013 Digital Enterprise Research Institute, NUI Galway
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+    <key id="author_of" for="node" attr.name="author_of" attr.type="long"/>
+    <key id="year" for="node" attr.name="year" attr.type="int"/>
+    <key id="name" for="node" attr.name="name" attr.type="String"/>
+    <key id="cluster_id" for="node" attr.name="cluster_id" attr.type="long"/>
+    <key id="cocit_count" for="edge" attr.name="cocit_count" attr.type="int"/>
+    <graph id="G" edgedefault="directed">
+        <!--AUTHORS-->
+        <node id="1">
+            <data key="author_id">1</data>
+            <data key="name">Karel Tandori</data>
+        </node>
+        <node id="2">
+            <data key="author_id">2</data>
+            <data key="name">Hrabe Morfius</data>
+        </node>
+        <node id="3">
+            <data key="author_id">3</data>
+            <data key="name">Slicna Anafeles</data>
+        </node>
+        <node id="10">
+            <data key="author_id">4</data>
+            <data key="name">Pavel Patek</data>
+        </node>
+        <node id="11">
+            <data key="author_id">5</data>
+            <data key="name">Zaphod Beebelbrox</data>
+        </node>
+        <!-- CLUSTERS -->
+        <node id="4">
+            <data key="cluster_id">1</data>
+            <data key="year">2000</data>
+        </node>
+        <node id="5">
+            <data key="cluster_id">2</data>
+            <data key="year">2004</data>
+        </node>
+        <node id="6">
+            <data key="cluster_id">3</data>
+            <data key="year">2000</data>
+        </node>
+        <node id="7">
+            <data key="cluster_id">4</data>
+            <data key="year">2001</data>
+        </node>
+        <node id="8">
+            <data key="cluster_id">5</data>
+            <data key="year">2002</data>
+        </node>
+        <node id="9">
+            <data key="cluster_id">6</data>
+            <data key="year">2003</data>
+        </node>
+        <!-- citations -->
+        <edge id="12" source="4" target="6" label="cites"/>
+        <edge id="13" source="4" target="7" label="cites"/>
+        <edge id="14" source="4" target="8" label="cites"/>
+        <edge id="15" source="5" target="7" label="cites"/>
+        <edge id="16" source="5" target="8" label="cites"/>
+        <edge id="17" source="5" target="9" label="cites"/>
+        <!-- authorships -->
+        <edge id="18" source="1" target="6" label="author_of"/>
+        <edge id="19" source="2" target="7" label="author_of"/>
+        <edge id="20" source="3" target="7" label="author_of"/>
+        <edge id="21" source="10" target="8" label="author_of"/>
+        <edge id="22" source="11" target="9" label="author_of"/>
+        <!-- cocitations -->
+        <edge id="23" source="7" target="6" label="cocited">
+            <data key="cocit_count">1</data>
+        </edge>
+        <edge id="24" source="7" target="8" label="cocited">
+            <data key="cocit_count">2</data>
+        </edge>
+        <edge id="25" source="7" target="9" label="cocited">
+            <data key="cocit_count">1</data>
+        </edge>
+        <edge id="26" source="8" target="6" label="cocited">
+            <data key="cocit_count">1</data>
+        </edge>
+        <edge id="27" source="8" target="9" label="cocited">
+            <data key="cocit_count">1</data>
+        </edge>
+    </graph>
+</graphml>

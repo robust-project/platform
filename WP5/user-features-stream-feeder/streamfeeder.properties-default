@@ -1,0 +1,35 @@
+#=====================================================================================
+# ActiveMQ configuration
+
+# Broker URL to use (default: tcp://localhost:61616)
+#broker_url = tcp://robust-activemq.softwaremind.pl:61616
+
+# Topic Name to use (default: streams.events)
+#topic_name = ROBUST.GraphicEqualizer
+
+#=====================================================================================
+# MySQL configuration
+
+# Server host (default: 127.0.0.1)
+#mysql_host = someserver.domain
+
+# Server port (default: 3306)
+#mysql_port = 3310
+
+# User name (default: guest)
+#mysql_user = myuser
+
+# User password (default: guest)
+#mysql_password = mypass
+
+# Database name (default: dbname)
+#mysql_dbname = mydbname
+
+#=====================================================================================
+# Servlet Server configuration
+
+# Server listening host/address (default: localhost)
+#servlet_server_host = 0.0.0.0
+
+# Server port (default: 9991)
+#servlet_server_port = 12345

@@ -1,0 +1,3 @@
+<included>
+  <logger name="org.apache.activemq" level="WARN" />
+</included>

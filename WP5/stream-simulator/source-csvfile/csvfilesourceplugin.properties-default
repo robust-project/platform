@@ -1,0 +1,2 @@
+# CSV File to use for reading events (default: "events.csv");
+#csvfile = sample-tweets.csv

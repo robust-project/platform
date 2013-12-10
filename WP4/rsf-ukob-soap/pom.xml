@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>eu.robust.simulation</groupId>
+    <artifactId>rsf-ukob-soap</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.6-SNAPSHOT</version>
+    <name>rsf-ukob-soap</name>
+
+    <parent>
+        <artifactId>robust-parent-pom</artifactId>
+        <groupId>pl.swmind.robust</groupId>
+        <version>1.1-SNAPSHOT</version>
+    </parent>
+
+    <!--  please put the description here -->
+    <description>Description.</description>
+
+    <!--  please put information about the developers here -->
+    <developers>
+
+    </developers>
+
+
+    <!--  Information for CI - where to deploy release version -->
+    <distributionManagement>
+        <repository>
+            <id>Robust</id>
+            <name>Robust Repository</name>
+            <url>
+                http://robust.softwaremind.pl/mvn/content/repositories/releases
+            </url>
+        </repository>
+    </distributionManagement>
+
+    <!--  Information for CI - where to tag and commit the updated code -->
+    <!--  please update location of your project (WP number) -->
+    <scm>
+        <!--TODO fill with svn adress-->
+        <connection>scm:svn:</connection>
+        <developerConnection>scm:svn:</developerConnection>
+        <url></url>
+    </scm>
+
+    <build>
+        <finalName>rsf-ukob-soap</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+                <version>${cxf.ver}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-simple</artifactId>
+                        <version>${cxf.ver}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <className>eu.robust.simulation.service.interfaces.RobustService</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Dependency definitions -->
+    <dependencies>
+    
+<!--     	<dependency> -->
+<!--     		<groupId>eu.robust.simulation</groupId> -->
+<!--   			<artifactId>rsf-ukob</artifactId> -->
+<!-- 			<version>0.0.2-SNAPSHOT</version> -->
+<!--     	</dependency> -->
+
+        <!-- Apache CXF dependencies -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+
+        <!-- Spring Dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+          	<groupId>eu.robust.simulation</groupId>
+  			<artifactId>rsf-core</artifactId>
+  			<version>0.6.0</version>
+        </dependency>
+        
+        <dependency>
+          	<groupId>eu.robust.simulation</groupId>
+ 			<artifactId>rsf-ukob-soap-interfaces</artifactId>
+  			<version>0.3.0</version>
+        </dependency>
+
+    </dependencies>
+</project>
+

@@ -1,0 +1,20 @@
+{
+  "templateName": "Policy Forum Restriction 56",
+  "useCurrentTimeAsStartDate": false,
+  "startYear": 2009,
+  "startMonth": 12,
+  "startDay": 1,
+  "startHour": 8,
+  "endYear": 2010,
+  "endMonth": 4,
+  "endDay": 1,
+  "endHour": 8,
+  "numberOfAgents": 32723,
+  "communityModel": MIMListOrders,
+  "community": IBM,
+  "subCommunity": c76ebc42-5b21-41c9-99f4-7f05b926ff0c,
+  "Forum56": 50,
+  "PolicyLatestActivityCreationDate": 1.0,
+  "PolicyThreadCreationDate": 0,
+  "PolicyThreadSize": 0
+}

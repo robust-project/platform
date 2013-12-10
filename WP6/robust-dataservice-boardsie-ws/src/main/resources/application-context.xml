@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+    <import resource="classpath:META-INF/spring/jpa-boards-context.xml"/>
+
+    <bean id="propertyPlaceholder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:boardsie-ds.properties</value>
+                <value>classpath:boardsie-uri.properties</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- Spring manage ServiceBean -->
+    <bean id="dataServiceBoardsieImpl" class="pl.swmind.robust.ws.RobustDataServiceBoardsIEWSImpl" autowire="byType"/>
+
+    <!-- JAX-WS Service Endpoint -->
+    <jaxws:endpoint id="robustServiceBoardsie" implementor="#dataServiceBoardsieImpl" address="/robustDataServiceBoardsIE" />
+</beans>

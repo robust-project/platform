@@ -1,0 +1,26 @@
+/* Z-Index */
+#controls { position: relative; z-index: 1000; }
+
+/* Browser styles */
+#Browser_seriespanels { margin-bottom: 8px; }
+.Browser_help_button { margin-left: 5px; }
+
+/* Parameters */
+.Browser_parm_title { margin: 5px; padding: 5px; width: 100px; }
+.Browser_parm_dataset { margin: 5px; }
+.Browser_parm_community { margin: 5px; }
+.Browser_parm_feature { margin: 5px; }
+.Browser_parm_timestep { margin: 5px; }
+.Browser_parm_from { margin: 5px; }
+.Browser_parm_to { margin: 5px; }
+.Browser_parm_consolidation { margin: 5px; }
+.Browser_parm_refvalue { margin: 5px; padding: 5px; width: 100px; }
+
+/* Apply button */
+.Browser_apply_button {
+    margin: 5px;
+    float: right;
+}
+
+/* User messages */
+#Browser_usermessage { margin-top: 8px; margin-bottom: 0px; }
